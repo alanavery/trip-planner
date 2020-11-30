@@ -1,16 +1,16 @@
 {
   "development": {
-    "database": "auth_template_development",
+    "database": "trip_planner_development",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
   "test": {
-    "database": "auth_template_test",
+    "database": "trip_planner_test",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
   "production": {
-    "database": "auth_template_production",
+    "database": "trip_planner_production",
     "host": "127.0.0.1",
     "dialect": "postgres"
   }

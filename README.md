@@ -1,2 +1,2 @@
-# authentication_template
-An app template with authentication built in
+# Trip Planner
+GA Project 2 | Trip-planning app

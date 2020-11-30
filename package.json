@@ -1,22 +1,23 @@
 {
-  "name": "authentication_template",
+  "name": "trip-planner",
   "version": "1.0.0",
-  "description": "An app template with authentication built in",
+  "description": "GA Project 2 | Trip-planning app",
   "main": "server.js",
   "scripts": {
-    "test": "NODE_ENV=test node_modules/mocha/bin/mocha"
+    "test": "NODE_ENV=test node_modules/mocha/bin/mocha",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/delayedaa/authentication_template.git"
+    "url": "git+https://github.com/delayedaa/trip-planner.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/delayedaa/authentication_template/issues"
+    "url": "https://github.com/delayedaa/trip-planner/issues"
   },
-  "homepage": "https://github.com/delayedaa/authentication_template#readme",
+  "homepage": "https://github.com/delayedaa/trip-planner#readme",
   "dependencies": {
     "axios": "^0.21.0",
     "bcrypt": "^5.0.0",
@@ -37,5 +38,8 @@
     "chai": "^4.2.0",
     "mocha": "^8.2.1",
     "supertest": "^6.0.1"
+  },
+  "directories": {
+    "test": "test"
   }
 }
