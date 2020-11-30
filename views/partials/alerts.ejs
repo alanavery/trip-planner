@@ -1,0 +1,11 @@
+<% if (alerts.error) { %>
+<% alerts.error.forEach(message => { %>
+<div><%= message %></div>
+<% }); %>
+<% } %>
+
+<% if (alerts.success) { %>
+<% alerts.success.forEach(message => { %>
+<div><%= message %></div>
+<% }); %>
+<% } %>

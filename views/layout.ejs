@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style.css">
+    <title>Trip Planner</title>
+  </head>
+
+  <body>
+    <%- include('partials/alerts') %>
+    <h1><a href="/">Trip Planner</a></h1>
+    <ul>
+      <% if (!currentUser) { %>
+      <li><a href="/auth/signup">Sign Up</a></li>
+      <li><a href="/auth/login">Log In</a></li>
+      <% } else { %>
+      <li><a href="/trips">Trips</a></li>
+      <li><a href="/auth/logout">Log Out</a></li>
+      <% } %>
+    </ul>
+    <%- body %>
+  </body>
+
+</html>
