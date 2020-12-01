@@ -29,8 +29,8 @@ router.post('/signup', async (req, res) => {
       req.flash('error', 'Invalid name, email and/or password.');
       res.redirect('/auth/signup');
     }
-  } catch (error) {
-    req.flash('error', `An error occurred: ${error.message}`);
+  } catch (err) {
+    req.flash('error', `An error occurred: ${err.message}`);
     res.redirect('/auth/signup');
   }
 });

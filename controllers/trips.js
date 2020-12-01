@@ -3,13 +3,36 @@ let router = require('express').Router();
 let db = require('../models');
 
 // Route: GET /trips
-router.get('/', (req, res) => {
-  res.render('trips/trips');
+router.get('/', async (req, res) => {
+  try {
+    let user = await db.user.findOne({ where: { email: req.user.email } });
+    let trips = await user.getTrips();
+    console.log(trips);
+    res.render('trips/trips', { user, trips });
+  } catch (err) {
+    req.flash('error', err.message);
+    res.redirect('/');
+  }
 });
 
 // Route: POST /trips
-router.post('/', (req, res) => {
-
+router.post('/', async (req, res) => {
+  // console.log(req.user.email);
+  try {
+    let user = await db.user.findOne({
+      where: { email: req.user.email }
+    });
+    let trip = await user.createTrip({
+      name: req.body.name,
+      startDate: req.body.startDate,
+      endDate: req.body.endDate
+    });
+    req.flash('success', 'Trip created.');
+    res.redirect('/trips');
+  } catch (err) {
+    req.flash('error', err.message);
+    res.redirect('/');
+  }
 });
 
 // Export module

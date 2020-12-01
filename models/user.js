@@ -23,7 +23,7 @@ module.exports = (sequelize, DataTypes) => {
       validate: {
         len: {
           args: [1, 99],
-          msg: 'First name must be between 1 and 99 characters'
+          msg: 'First name must be between 1 and 99 characters.'
         }
       }
     },
@@ -32,20 +32,20 @@ module.exports = (sequelize, DataTypes) => {
       validate: {
         len: {
           args: [1, 99],
-          msg: 'Last name must be between 1 and 99 characters'
+          msg: 'Last name must be between 1 and 99 characters.'
         }
       }
     },
     email: {
       type: DataTypes.STRING,
-      validate: { isEmail: { msg: 'Invalid email address' } }
+      validate: { isEmail: { msg: 'Invalid email address.' } }
     },
     password: {
       type: DataTypes.STRING,
       validate: {
         len: {
           args: [8, 99],
-          msg: 'Password must be between 8 and 99 characters'
+          msg: 'Password must be between 8 and 99 characters.'
         }
       }
     }

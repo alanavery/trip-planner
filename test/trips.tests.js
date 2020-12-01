@@ -117,9 +117,61 @@ describe('Trips Controller', () => {
     });
   });
 
-  // describe('POST /trips', () => {
-  //   it('should redirect to /trips on success', done => {
+  describe('POST /trips', () => {
+    it('should redirect to /trips on success', done => {
+      agent.post('/auth/signup')
+        .set('Content-Type', 'application/x-www-form-urlencoded')
+        .send({
+          firstName: 'John',
+          lastName: 'Doe',
+          email: 'jdoe25@gmail.com',
+          password: 'password'
+        })
+        .expect(302)
+        .expect('Location', '/')
+        .end((err, res) => {
+          if (err) {
+            done(err);
+          } else {
+            agent.post('/trips')
+              .set('Content-Type', 'application/x-www-form-urlencoded')
+              .send({
+                name: 'Second Trip',
+                startDate: '2021-01-01',
+                endDate: '2021-01-07'
+              })
+              .expect('Location', '/trips')
+              .expect(302, done);
+          }
+        });
+    });
 
-  //   })
-  // })
+    it('should redirect to / on failure', done => {
+      agent.post('/auth/signup')
+        .set('Content-Type', 'application/x-www-form-urlencoded')
+        .send({
+          firstName: 'John',
+          lastName: 'Doe',
+          email: 'jdoe26@gmail.com',
+          password: 'password'
+        })
+        .expect(302)
+        .expect('Location', '/')
+        .end((err, res) => {
+          if (err) {
+            done(err);
+          } else {
+            agent.post('/trips')
+              .set('Content-Type', 'application/x-www-form-urlencoded')
+              .send({
+                name: '',
+                startDate: '2021-01-01',
+                endDate: '2021-01-07'
+              })
+              .expect('Location', '/')
+              .expect(302, done);
+          }
+        });
+    });
+  });
 });

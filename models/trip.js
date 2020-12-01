@@ -20,17 +20,17 @@ module.exports = (sequelize, DataTypes) => {
       validate: {
         len: {
           args: [1, 99],
-          msg: 'Trip name must be between 1 and 99 characters'
+          msg: 'Trip name must be between 1 and 99 characters.'
         }
       }
     },
     startDate: {
       type: DataTypes.DATE,
-      validate: { isDate: { msg: 'Invalid date' } }
+      validate: { isDate: { msg: 'Invalid date.' } }
     },
     endDate: {
       type: DataTypes.DATE,
-      validate: { isDate: { msg: 'Invalid date' } }
+      validate: { isDate: { msg: 'Invalid date.' } }
     },
     userId: DataTypes.INTEGER
   }, {

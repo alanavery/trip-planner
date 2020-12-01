@@ -1,16 +1,32 @@
-<h2>Trips</h2>
+<h2><%= user.firstName %>'s Dashboard</h2>
 
-<h3>Add a Trip</h3>
+<div class="container-dashboard">
+  <div class="column-add-trip">
+    <h3>Add a Trip</h3>
+    <form action="/trips" method="POST">
+      <label for="trip-name">Name</label>
+      <input id="trip-name" type="text" name="name">
 
-<form action="/trips" method="POST">
-  <label for="trip-name">Name</label>
-  <input id="trip-name" type="text" name="name">
+      <label for="trip-start-date">Start Date</label>
+      <input id="trip-start-date" type="date" name="startDate">
 
-  <label for="trip-start-date">Start Date</label>
-  <input id="trip-start-date" type="date" name="startDate">
+      <label for="trip-end-date">End Date</label>
+      <input id="trip-end-date" type="date" name="endDate">
 
-  <label for="trip-end-date">End Date</label>
-  <input id="trip-end-date" type="date" name="endDate">
+      <input type="submit" value="Add">
+    </form>
+  </div>
 
-  <input type="submit" value="Add">
-</form>
+  <% if (trips) { %>
+  <div class="column-trips">
+    <h3>Trips</h3>
+    <% trips.forEach(trip => { %>
+    <div class="trip">
+      <h4><%= trip.name %></h4>
+      <p class="date"><%= trip.startDate %></p>
+      <p class="date"><%= trip.endDate %></p>
+    </div>
+    <% }); %>
+  </div>
+  <% } %>
+</div>
