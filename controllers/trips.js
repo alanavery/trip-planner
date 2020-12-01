@@ -6,8 +6,11 @@ let db = require('../models');
 router.get('/', async (req, res) => {
   try {
     let user = await db.user.findOne({ where: { email: req.user.email } });
-    let trips = await user.getTrips();
-    console.log(trips);
+    let trips = await user.getTrips({
+      order: [
+        ['startDate', 'ASC']
+      ]
+    });
     res.render('trips/trips', { user, trips });
   } catch (err) {
     req.flash('error', err.message);
@@ -17,7 +20,6 @@ router.get('/', async (req, res) => {
 
 // Route: POST /trips
 router.post('/', async (req, res) => {
-  // console.log(req.user.email);
   try {
     let user = await db.user.findOne({
       where: { email: req.user.email }

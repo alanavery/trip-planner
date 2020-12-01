@@ -1,3 +1,8 @@
+input {
+  display: block;
+  margin-bottom: 10px;
+}
+
 header {
   display: flex;
   justify-content: space-between;
@@ -14,7 +19,9 @@ nav li {
   grid-template-columns: 1fr 2fr;
 }
 
-input {
-  display: block;
-  margin-bottom: 10px;
+.trip {
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  background-color: lightgray;
 }
