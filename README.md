@@ -12,3 +12,4 @@ GA Project 2 | Trip-planning app
 ## Wireframes
 ![ERD](reference/dashboard-01-default-desktop.png)
 ![ERD](reference/trip-01-default-desktop.png)
+![ERD](reference/trip-02-default-desktop.png)
