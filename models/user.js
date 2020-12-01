@@ -13,6 +13,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      models.user.hasMany(models.trip);
     }
   };
   user.init({
@@ -59,7 +60,7 @@ module.exports = (sequelize, DataTypes) => {
       }
     },
     sequelize,
-    modelName: 'user',
+    modelName: 'user'
   });
   // Create method to validate passwords
   user.prototype.validPassword = function (submittedPassword) {

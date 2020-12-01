@@ -1,1 +1,16 @@
-<p>This is the trips page. It will feature a list of trips.</p>
+<h2>Trips</h2>
+
+<h3>Add a Trip</h3>
+
+<form action="/trips" method="POST">
+  <label for="trip-name">Name</label>
+  <input id="trip-name" type="text" name="name">
+
+  <label for="trip-start-date">Start Date</label>
+  <input id="trip-start-date" type="date" name="startDate">
+
+  <label for="trip-end-date">End Date</label>
+  <input id="trip-end-date" type="date" name="endDate">
+
+  <input type="submit" value="Add">
+</form>
