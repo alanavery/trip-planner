@@ -21,7 +21,7 @@ router.post('/signup', async (req, res) => {
     });
     if (user[1]) {
       passport.authenticate('local', {
-        successRedirect: '/',
+        successRedirect: '/trips',
         successFlash: 'Account created.',
         failureRedirect: '/auth/signup'
       })(req, res);
@@ -42,7 +42,7 @@ router.get('/login', (req, res) => {
 
 // Route: POST /auth/login
 router.post('/login', passport.authenticate('local', {
-  successRedirect: '/',
+  successRedirect: '/trips',
   successFlash: 'You are logged in.',
   failureRedirect: '/auth/login',
   failureFlash: 'Invalid email and/or password.'

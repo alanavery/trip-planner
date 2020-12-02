@@ -1,7 +1,7 @@
 <h2><%= user.firstName %>'s Dashboard</h2>
 
-<div class="container-dashboard">
-  <div class="column-add-trip">
+<section class="section-dashboard">
+  <section class="section-add-trip">
     <h3>Add a Trip</h3>
     <form action="/trips" method="POST">
       <label for="trip-name">Name</label>
@@ -15,18 +15,20 @@
 
       <input type="submit" value="Add">
     </form>
-  </div>
+  </section>
 
   <% if (trips.length) { %>
-  <div class="column-trips">
+  <section class="section-trips">
     <h3>Trips</h3>
     <% trips.forEach(trip => { %>
-    <div class="trip">
-      <h4><%= trip.name %></h4>
-      <p class="date"><%= trip.startDate %></p>
-      <p class="date"><%= trip.endDate %></p>
-    </div>
+    <a href="/trips/<%= trip.id %>">
+      <div class="div-trip">
+        <h4><%= trip.name %></h4>
+        <p class="date"><%= trip.startDate %></p>
+        <p class="date"><%= trip.endDate %></p>
+      </div>
+    </a>
     <% }); %>
-  </div>
+  </section>
   <% } %>
-</div>
+</section>

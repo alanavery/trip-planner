@@ -14,12 +14,31 @@ nav li {
   margin-left: 20px;
 }
 
-.container-dashboard {
+.section-dashboard {
   display: grid;
   grid-template-columns: 1fr 2fr;
 }
 
-.trip {
+.div-trip {
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  background-color: lightgray;
+}
+
+.section-trip-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.section-days {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+}
+
+.div-day {
   padding: 20px;
   border-radius: 8px;
   margin-bottom: 20px;

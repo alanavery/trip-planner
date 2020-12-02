@@ -1,0 +1,19 @@
+<% let startDate = new Date(trip.startDate); %>
+<% let endDate = new Date(trip.endDate); %>
+<% let numDays = Math.floor((endDate - startDate) / (1000 * 60 * 60 * 24)) + 1; %>
+<% let weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']; %>
+
+<section class="section-trip-info">
+  <h2><%= trip.name %></h2>
+  <p class="date"><%= trip.startDate %> to <%= trip.endDate %></p>
+</section>
+
+<section class="section-days">
+  <% for (let i = 0; i < numDays; i++) { %>
+  <% let date = new Date(); %>
+  <% date.setDate(startDate.getUTCDate() + i); %>
+  <div class="div-day">
+    <h4><%= weekdays[date.getDay()] %></h4>
+  </div>
+  <% } %>
+</section>

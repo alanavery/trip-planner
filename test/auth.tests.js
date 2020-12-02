@@ -17,7 +17,7 @@ describe('Auth Controller', () => {
   });
 
   describe('POST /auth/signup', () => {
-    it('should redirect to / on success', done => {
+    it('should redirect to /trips on success', done => {
       request(app).post('/auth/signup')
         .set('Content-Type', 'application/x-www-form-urlencoded')
         .send({
@@ -26,7 +26,7 @@ describe('Auth Controller', () => {
           email: 'jdoe10@gmail.com',
           password: 'password'
         })
-        .expect('Location', '/')
+        .expect('Location', '/trips')
         .expect(302, done);
     });
 
@@ -51,14 +51,14 @@ describe('Auth Controller', () => {
   });
 
   describe('POST /auth/login', () => {
-    it('should redirect to / on success', done => {
+    it('should redirect to /trips on success', done => {
       request(app).post('/auth/login')
         .set('Content-Type', 'application/x-www-form-urlencoded')
         .send({
           email: 'jdoe10@gmail.com',
           password: 'password'
         })
-        .expect('Location', '/')
+        .expect('Location', '/trips')
         .expect(302, done);
     });
 

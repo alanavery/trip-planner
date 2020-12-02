@@ -19,7 +19,7 @@ describe('Create Trip', () => {
       password: 'password'
     }).then(user => {
       user.createTrip({
-        name: 'First Trip',
+        name: 'My Trip',
         startDate: '2021-01-01',
         endDate: '2021-01-07'
       }).then(() => {
@@ -105,8 +105,8 @@ describe('Trips Controller', () => {
           email: 'jdoe24@gmail.com',
           password: 'password'
         })
+        .expect('Location', '/trips')
         .expect(302)
-        .expect('Location', '/')
         .end((err, res) => {
           if (err) {
             done(err);
@@ -127,8 +127,8 @@ describe('Trips Controller', () => {
           email: 'jdoe25@gmail.com',
           password: 'password'
         })
+        .expect('Location', '/trips')
         .expect(302)
-        .expect('Location', '/')
         .end((err, res) => {
           if (err) {
             done(err);
@@ -136,7 +136,7 @@ describe('Trips Controller', () => {
             agent.post('/trips')
               .set('Content-Type', 'application/x-www-form-urlencoded')
               .send({
-                name: 'Second Trip',
+                name: 'My Trip',
                 startDate: '2021-01-01',
                 endDate: '2021-01-07'
               })
@@ -155,8 +155,8 @@ describe('Trips Controller', () => {
           email: 'jdoe26@gmail.com',
           password: 'password'
         })
+        .expect('Location', '/trips')
         .expect(302)
-        .expect('Location', '/')
         .end((err, res) => {
           if (err) {
             done(err);
@@ -171,6 +171,45 @@ describe('Trips Controller', () => {
               .expect('Location', '/')
               .expect(302, done);
           }
+        });
+    });
+  });
+
+  describe('GET /trips/:id', () => {
+    it('should redirect to /auth/login if not logged in', done => {
+      request(app).get('/trips/1')
+        .expect('Location', '/auth/login')
+        .expect(302, done);
+    });
+
+    it('should return 200 response if logged in and trip is created', done => {
+      agent.post('/auth/signup')
+        .set('Content-Type', 'application/x-www-form-urlencoded')
+        .send({
+          firstName: 'John',
+          lastName: 'Doe',
+          email: 'jdoe27@gmail.com',
+          password: 'password'
+        })
+        .expect('Location', '/trips')
+        .expect(302)
+        .then(() => {
+          agent.post('/trips')
+            .set('Content-Type', 'application/x-www-form-urlencoded')
+            .send({
+              name: 'My Trip',
+              startDate: '2021-01-01',
+              endDate: '2021-01-07'
+            })
+            .expect('Location', '/trips')
+            .expect(302, done)
+            .end((err, res) => {
+              if (err) {
+                done(err);
+              } else {
+                agent.get('/trips/1').expect(200, done);
+              }
+            });
         });
     });
   });
