@@ -43,5 +43,21 @@ router.get('/:id', async (req, res) => {
   }
 });
 
+// Route: PUT /trips/:id
+router.put('/:id', async (req, res) => {
+  try {
+    await db.trip.update({
+      name: req.body.name,
+      startDate: req.body.startDate,
+      endDate: req.body.endDate
+    }, { where: { id: req.params.id } });
+    req.flash('success', 'Trip updated.');
+    res.redirect(`/trips/${req.params.id}`);
+  } catch (err) {
+    req.flash('error', err.message);
+    res.redirect('/');
+  }
+});
+
 // Export module
 module.exports = router;

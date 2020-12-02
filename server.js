@@ -6,6 +6,7 @@ let morgan = require('morgan');
 let passport = require('./config/pp-config');
 let flash = require('connect-flash');
 let isLoggedIn = require('./middleware/is-logged-in');
+let methodOverride = require('method-override');
 require('dotenv').config();
 
 // Import API modules
@@ -18,6 +19,7 @@ let SESSION_SECRET = process.env.SESSION_SECRET;
 let app = express();
 
 // Middleware ——————————————————————————————
+app.use(methodOverride('_method'));
 app.set('view engine', 'ejs');
 app.use(layouts);
 app.use(express.static('public'));

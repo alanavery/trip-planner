@@ -5,7 +5,26 @@
 
 <section class="section-trip-info">
   <h2><%= trip.name %></h2>
-  <p class="date"><%= trip.startDate %> to <%= trip.endDate %></p>
+  <div class="div-trip-info">
+    <p><%= trip.startDate %> to <%= trip.endDate %></p>
+    <p class="trip-edit">Edit</p>
+    <p class="trip-delete">Delete</p>
+  </div>
+</section>
+
+<section class="section-trip-edit" hidden>
+  <form action="/trips/<%= trip.id %>/?_method=put" method="post">
+    <label for="trip-name">Name</label>
+    <input id="trip-name" type="text" name="name" value="<%= trip.name %>">
+
+    <label for="trip-start-date">Start Date</label>
+    <input id="trip-start-date" type="date" name="startDate" value="<%= trip.startDate %>">
+
+    <label for="trip-end-date">End Date</label>
+    <input id="trip-end-date" type="date" name="endDate" value="<%= trip.endDate %>">
+
+    <input type="submit" value="Add">
+  </form>
 </section>
 
 <section class="section-days">

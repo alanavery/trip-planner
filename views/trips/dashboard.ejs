@@ -3,7 +3,7 @@
 <section class="section-dashboard">
   <section class="section-add-trip">
     <h3>Add a Trip</h3>
-    <form action="/trips" method="POST">
+    <form action="/trips" method="post">
       <label for="trip-name">Name</label>
       <input id="trip-name" type="text" name="name">
 
@@ -24,8 +24,8 @@
     <a href="/trips/<%= trip.id %>">
       <div class="div-trip">
         <h4><%= trip.name %></h4>
-        <p class="date"><%= trip.startDate %></p>
-        <p class="date"><%= trip.endDate %></p>
+        <p><%= trip.startDate %></p>
+        <p><%= trip.endDate %></p>
       </div>
     </a>
     <% }); %>

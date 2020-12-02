@@ -32,6 +32,16 @@ nav li {
   align-items: center;
 }
 
+.div-trip-info {
+  text-align: right;
+}
+
+.trip-edit, .trip-delete {
+  display: inline-block;
+  margin-left: 20px;
+  cursor: pointer;
+}
+
 .section-days {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
