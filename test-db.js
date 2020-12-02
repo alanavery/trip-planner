@@ -1,10 +1,4 @@
-let db = require('./models');
+let { exec } = require('child_process');
 
-let submittedEmail = 'delayedaa@gmail.com';
+exec('touch test.js');
 
-let findOne = async username => {
-  let user = await db.user.findOne({ where: { email: username } });
-  console.log(user);
-};
-
-findOne(submittedEmail);

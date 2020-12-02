@@ -140,7 +140,7 @@ describe('Trips Controller', () => {
                 startDate: '2021-01-01',
                 endDate: '2021-01-07'
               })
-              .expect('Location', '/trips')
+              .expect('Location', '/trips/3')
               .expect(302, done);
           }
         });
@@ -201,15 +201,8 @@ describe('Trips Controller', () => {
               startDate: '2021-01-01',
               endDate: '2021-01-07'
             })
-            .expect('Location', '/trips')
-            .expect(302, done)
-            .end((err, res) => {
-              if (err) {
-                done(err);
-              } else {
-                agent.get('/trips/1').expect(200, done);
-              }
-            });
+            .expect('Location', '/trips/4')
+            .expect(302, done);
         });
     });
   });

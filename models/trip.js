@@ -12,6 +12,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       models.trip.belongsTo(models.user);
+      models.trip.hasMany(models.segment);
     }
   };
   trip.init({
