@@ -14,7 +14,7 @@ nav li {
   margin-left: 20px;
 }
 
-.section-dashboard {
+.sec-dashboard {
   display: grid;
   grid-template-columns: 1fr 2fr;
 }
@@ -26,7 +26,7 @@ nav li {
   background-color: lightgray;
 }
 
-.section-trip-info {
+.sec-trip-info {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -42,7 +42,7 @@ nav li {
   cursor: pointer;
 }
 
-.section-days {
+.sec-days {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 10px;

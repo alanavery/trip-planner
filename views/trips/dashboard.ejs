@@ -1,7 +1,7 @@
 <h2><%= user.firstName %>'s Dashboard</h2>
 
-<section class="section-dashboard">
-  <section class="section-add-trip">
+<section class="sec-dashboard">
+  <section class="sec-add-trip">
     <h3>Add a Trip</h3>
     <form action="/trips" method="post">
       <label for="trip-name">Name</label>
@@ -18,7 +18,7 @@
   </section>
 
   <% if (trips.length) { %>
-  <section class="section-trips">
+  <section class="sec-trips">
     <h3>Trips</h3>
     <% trips.forEach(trip => { %>
     <a href="/trips/<%= trip.id %>">

@@ -24,7 +24,7 @@ router.post('/', async (req, res) => {
       endDate: req.body.endDate
     });
     req.flash('success', 'Trip created.');
-    res.redirect('/trips');
+    res.redirect(`/trips/${trip.id}`);
   } catch (err) {
     req.flash('error', err.message);
     res.redirect('/');
@@ -53,6 +53,18 @@ router.put('/:id', async (req, res) => {
     }, { where: { id: req.params.id } });
     req.flash('success', 'Trip updated.');
     res.redirect(`/trips/${req.params.id}`);
+  } catch (err) {
+    req.flash('error', err.message);
+    res.redirect('/');
+  }
+});
+
+// Route: DELETE /trips/:id
+router.delete('/:id', async (req, res) => {
+  try {
+    await db.trip.destroy({ where: { id: req.params.id } });
+    req.flash('success', 'Trip deleted.');
+    res.redirect('/trips');
   } catch (err) {
     req.flash('error', err.message);
     res.redirect('/');
