@@ -3,24 +3,41 @@ document.addEventListener('DOMContentLoaded', () => {
   let tripDelete = document.querySelector('.trip-delete');
   let secTripEdit = document.querySelector('.sec-trip-edit');
   let secTripDelete = document.querySelector('.sec-trip-delete');
-  let divDay = document.querySelector('.div-day');
   let buttonAddSegmentAll = document.querySelectorAll('.button-add-segment');
   let formSegmentAll = document.querySelectorAll('.form-segment');
+  let divSegmentAll = document.querySelectorAll('.div-segment');
+  let divSegmentInfoSecondaryAll = document.querySelectorAll('.div-segment-info-secondary');
+  let segmentEditAll = document.querySelectorAll('.segment-edit');
+  let formSegmentEditAll = document.querySelectorAll('.form-segment-edit');
+  let divSegmentInfoAll = document.querySelectorAll('.div-segment-info');
+  let segmentEditCancelAll = document.querySelectorAll('.segment-edit-cancel');
+
+  let visualReset = () => {
+    secTripDelete.hidden = true;
+    secTripEdit.hidden = true;
+    formSegmentAll.forEach(form => form.hidden = true);
+    formSegmentEditAll.forEach(form => form.hidden = true);
+    divSegmentInfoAll.forEach(div => div.hidden = false);
+    divSegmentInfoSecondaryAll.forEach(div => div.hidden = true);
+    buttonAddSegmentAll.forEach(button => button.textContent = '+');
+  };
 
   tripEdit.addEventListener('click', () => {
-    secTripDelete.hidden = true;
     if (secTripEdit.hidden) {
+      visualReset();
       secTripEdit.hidden = false;
     } else {
+      visualReset();
       secTripEdit.hidden = true;
     }
   });
 
   tripDelete.addEventListener('click', () => {
-    secTripEdit.hidden = true;
     if (secTripDelete.hidden) {
+      visualReset();
       secTripDelete.hidden = false;
     } else {
+      visualReset();
       secTripDelete.hidden = true;
     }
   });
@@ -29,14 +46,44 @@ document.addEventListener('DOMContentLoaded', () => {
     button.addEventListener('click', event => {
       let selectedForm = event.target.parentNode.nextElementSibling;
       if (selectedForm.hidden) {
-        formSegmentAll.forEach(form => form.hidden = true);
-        buttonAddSegmentAll.forEach(button => button.textContent = '+');
+        visualReset();
         selectedForm.hidden = false;
         event.target.textContent = '-';
       } else {
-        formSegmentAll.forEach(form => form.hidden = true);
-        buttonAddSegmentAll.forEach(button => button.textContent = '+');
+        visualReset();
       }
     });
   });
+
+  divSegmentAll.forEach(div => {
+    div.addEventListener('click', event => {
+      let selectedInfoSecondary = event.currentTarget.firstElementChild.lastElementChild;
+      let selectedFormSegmentEdit = event.currentTarget.lastElementChild;
+      if (selectedInfoSecondary.hidden) {
+        visualReset();
+        selectedInfoSecondary.hidden = false;
+      } else if (selectedFormSegmentEdit.hidden) {
+        visualReset();
+      }
+    });
+  });
+
+  segmentEditAll.forEach(button => {
+    button.addEventListener('click', event => {
+      let selectedSegmentInfo = event.target.parentNode.parentNode;
+      let selectedFormSegmentEdit = selectedSegmentInfo.nextElementSibling;
+      console.log(selectedFormSegmentEdit);
+      selectedSegmentInfo.hidden = true;
+      selectedFormSegmentEdit.hidden = false;
+    });
+  });
+
+  segmentEditCancelAll.forEach(button => {
+    button.addEventListener('click', event => {
+      event.preventDefault();
+      visualReset();
+    });
+  });
+
+  let;
 })

@@ -76,8 +76,6 @@ router.delete('/:id', async (req, res) => {
 router.post('/:id', async (req, res) => {
   try {
     let trip = await db.trip.findOne({ where: { id: req.params.id } });
-    console.log(trip);
-    console.log(req.body);
     await trip.createSegment({
       subcategoryId: req.body.subcategoryId,
       date: req.body.date,
@@ -88,7 +86,37 @@ router.post('/:id', async (req, res) => {
       notes: req.body.notes,
       booked: req.body.booked
     });
-    req.flash('success', 'Segment created.');
+    res.redirect(`/trips/${req.params.id}`);
+  } catch (err) {
+    req.flash('error', err.message);
+    res.redirect(`/trips/${req.params.id}`);
+  }
+});
+
+// Route: PUT /trips/:id/:segment
+router.put('/:id/:segment', async (req, res) => {
+  try {
+    await db.segment.update({
+      subcategoryId: req.body.subcategoryId,
+      date: req.body.date,
+      name: req.body.name,
+      address: req.body.address,
+      phone: req.body.phone,
+      url: req.body.url,
+      notes: req.body.notes,
+      booked: req.body.booked
+    }, { where: { id: req.params.segment } });
+    res.redirect(`/trips/${req.params.id}`);
+  } catch (err) {
+    req.flash('error', err.message);
+    res.redirect(`/trips/${req.params.id}`);
+  }
+});
+
+// Route: DELETE /trips/:id/:segment
+router.delete('/:id/:segment', async (req, res) => {
+  try {
+    await db.segment.destroy({ where: { id: req.params.segment } });
     res.redirect(`/trips/${req.params.id}`);
   } catch (err) {
     req.flash('error', err.message);

@@ -27,6 +27,14 @@
     </header>
     <%- body %>
     <script src="/app.js"></script>
+    <script>
+      function activatePlacesSearch() {
+        let input = document.getElementById('search-term');
+        let autocomplete = new google.maps.places.Autocomplete(input);
+      }
+    </script>
+    <script defer
+      src="https://maps.googleapis.com/maps/api/js?key=<%= process.env.GOOGLE_MAPS_API_KEY %>&libraries=places&callback=activatePlacesSearch"></script>
   </body>
 
 </html>

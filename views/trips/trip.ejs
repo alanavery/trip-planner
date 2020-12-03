@@ -12,6 +12,8 @@
   </div>
 </section>
 
+<input type="text" name="" id="search-term">
+
 <section class="sec-trip-edit" hidden>
   <form action="/trips/<%= trip.id %>/?_method=put" method="post">
     <label for="trip-name">Name</label>
@@ -75,9 +77,71 @@
     <% segments.forEach(segment => { %>
     <% if (`${segment.date.getUTCFullYear()}-${segment.date.getUTCMonth() + 1}-${segment.date.getUTCDate()}` === dateFormatted) { %>
     <div class="div-segment">
-      <h4><%= subcategories[segment.subcategoryId].name %></h4>
-      <h5><%= segment.name %></h5>
-      <p><%= segment.address %></p>
+      <div class="div-segment-info">
+        <div class="div-segment-info-primary">
+          <h5><%= subcategories[segment.subcategoryId - 1].name %></h5>
+          <h4><%= segment.name %></h4>
+          <p><%= segment.notes %></p>
+        </div>
+        <div class="div-segment-info-secondary" hidden>
+          <% if (segment.address) { %>
+          <p>Address: <%= segment.address %></p>
+          <% } %>
+          <% if (segment.phone) { %>
+          <p>Phone: <%= segment.phone %></p>
+          <% } %>
+          <% if (segment.url) { %>
+          <p>Website: <a href="<%= segment.url %>"><%= segment.url %></a></p>
+          <% } %>
+          <% if (segment.booked) { %>
+          <p>Booked: <%= segment.booked %></p>
+          <% } %>
+          <button class="segment-edit">Edit</button>
+          <form class="segment-delete" action="/trips/<%= trip.id %>/<%= segment.id %>/?_method=delete" method="post">
+            <input type="submit" value="Delete">
+          </form>
+        </div>
+      </div>
+
+      <form class="form-segment-edit" action="/trips/<%= trip.id %>/<%= segment.id %>/?_method=put" method="post"
+        hidden>
+        <label for="segment-subcategory">Category</label>
+        <select name="subcategoryId" id="segment-subcategory" required>
+          <option value="">Choose a category</option>
+          <% subcategories.forEach(subcategory => { %>
+          <% if (subcategory.id === segment.subcategoryId) { %>
+          <option value="<%= subcategory.id %>" selected><%= subcategory.name %></option>
+          <% } else { %>
+          <option value="<%= subcategory.id %>"><%= subcategory.name %></option>
+          <% } %>
+          <% }); %>
+        </select>
+        <input type="hidden" name="date" value="<%= dateFormatted %>">
+        <label for="segment-name">Name</label>
+        <input id="segment-name" type="text" name="name" value="<%= segment.name %>" required>
+        <label for="segment-address">Address</label>
+        <input id="segment-address" type="text" name="address" value="<%= segment.address %>">
+        <label for="segment-phone">Phone</label>
+        <input id="segment-phone" type="tel" name="phone" value="<%= segment.phone %>">
+        <label for="segment-url">Website</label>
+        <input id="segment-url" type="url" name="url" value="<%= segment.url %>">
+        <label for="segment-notes">Notes</label>
+        <textarea id="segment-notes" name="notes"><%= segment.notes %></textarea>
+        <p>Booked?</p>
+        <% if (segment.booked) { %>
+        <label for="segment-booked-yes">Yes</label>
+        <input id="segment-booked-yes" type="radio" name="booked" value="true" checked>
+        <label for="segment-booked-no">No</label>
+        <input id="segment-booked-no" type="radio" name="booked" value="false">
+        <% } else { %>
+        <label for="segment-booked-yes">Yes</label>
+        <input id="segment-booked-yes" type="radio" name="booked" value="true">
+        <label for="segment-booked-no">No</label>
+        <input id="segment-booked-no" type="radio" name="booked" value="false" checked>
+        <% } %>
+        <input type="submit" value="Update">
+        <button class="segment-edit-cancel">Cancel</button>
+      </form>
     </div>
     <% } %>
     <% }); %>
