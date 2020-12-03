@@ -84,6 +84,4 @@ document.addEventListener('DOMContentLoaded', () => {
       visualReset();
     });
   });
-
-  let;
 })
