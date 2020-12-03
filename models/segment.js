@@ -16,19 +16,13 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   segment.init({
-    startTime: {
+    subcategoryId: DataTypes.INTEGER,
+    date: {
       type: DataTypes.DATE,
-      allowNull: false,
-      validate: { isDate: { msg: 'Invalid date.' } }
-    },
-    endTime: {
-      type: DataTypes.DATE,
-      allowNull: false,
       validate: { isDate: { msg: 'Invalid date.' } }
     },
     name: {
       type: DataTypes.STRING,
-      allowNull: false,
       validate: {
         len: {
           args: [1, 99],
@@ -38,42 +32,41 @@ module.exports = (sequelize, DataTypes) => {
     },
     address: {
       type: DataTypes.STRING,
-      allowNull: true,
-      validate: {
-        len: {
-          args: [1, 99],
-          msg: 'Address must be between 1 and 99 characters.'
-        }
-      }
+      // allowNull: true,
+      // validate: {
+      //   len: {
+      //     args: [1, 99],
+      //     msg: 'Address must be between 1 and 99 characters.'
+      //   }
+      // }
     },
     phone: {
       type: DataTypes.STRING,
-      allowNull: true,
-      validate: {
-        len: {
-          args: [1, 99],
-          msg: 'Phone must be between 1 and 99 characters.'
-        }
-      }
+      // allowNull: true,
+      // validate: {
+      //   len: {
+      //     args: [1, 99],
+      //     msg: 'Phone must be between 1 and 99 characters.'
+      //   }
+      // }
     },
     url: {
       type: DataTypes.STRING,
-      allowNull: true,
-      validate: { isUrl: { msg: 'Invalid url.' } }
+      // allowNull: true,
+      // validate: { isUrl: { msg: 'Invalid url.' } }
     },
     notes: {
       type: DataTypes.STRING(500),
-      allowNull: true,
-      validate: {
-        len: {
-          args: [1, 500],
-          msg: 'Notes must be between 1 and 500 characters.'
-        }
-      }
+      // allowNull: true,
+      // validate: {
+      //   len: {
+      //     args: [1, 500],
+      //     msg: 'Notes must be between 1 and 500 characters.'
+      //   }
+      // }
     },
     booked: DataTypes.BOOLEAN,
-    tripId: DataTypes.INTEGER,
-    subcategoryId: DataTypes.INTEGER
+    tripId: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'segment',

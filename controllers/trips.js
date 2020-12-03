@@ -35,8 +35,9 @@ router.post('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
   try {
     let trip = await db.trip.findOne({ where: { id: req.params.id } });
-    console.log(trip);
-    res.render('trips/trip', { trip });
+    let subcategories = await db.subcategory.findAll();
+    let segments = await db.segment.findAll({ where: { tripId: req.params.id } });
+    res.render('trips/trip', { trip, subcategories, segments });
   } catch (err) {
     req.flash('error', err.message);
     res.redirect('/');
@@ -68,6 +69,30 @@ router.delete('/:id', async (req, res) => {
   } catch (err) {
     req.flash('error', err.message);
     res.redirect('/');
+  }
+});
+
+// Route: POST /trips/:id
+router.post('/:id', async (req, res) => {
+  try {
+    let trip = await db.trip.findOne({ where: { id: req.params.id } });
+    console.log(trip);
+    console.log(req.body);
+    await trip.createSegment({
+      subcategoryId: req.body.subcategoryId,
+      date: req.body.date,
+      name: req.body.name,
+      address: req.body.address,
+      phone: req.body.phone,
+      url: req.body.url,
+      notes: req.body.notes,
+      booked: req.body.booked
+    });
+    req.flash('success', 'Segment created.');
+    res.redirect(`/trips/${req.params.id}`);
+  } catch (err) {
+    req.flash('error', err.message);
+    res.redirect(`/trips/${req.params.id}`);
   }
 });
 

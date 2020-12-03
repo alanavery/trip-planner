@@ -1,4 +1,4 @@
-input {
+input, select, textarea {
   display: block;
   margin-bottom: 10px;
 }
@@ -53,4 +53,17 @@ nav li {
   border-radius: 8px;
   margin-bottom: 20px;
   background-color: lightgray;
+}
+
+.div-day-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.div-segment {
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  background-color: teal;
 }

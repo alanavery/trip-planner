@@ -1,0 +1,26 @@
+<form class="form-segment" action="/trips/<%= trip.id %>" method="post" hidden>
+  <label for="segment-subcategory">Category</label>
+  <select name="subcategoryId" id="segment-subcategory" required>
+    <option value="">Choose a category</option>
+    <% subcategories.forEach(subcategory => { %>
+    <option value="<%= subcategory.id %>"><%= subcategory.name %></option>
+    <% }); %>
+  </select>
+  <input type="date" name="date" value="<%= dateFormatted %>" hidden>
+  <label for="segment-name">Name</label>
+  <input id="segment-name" type="text" name="name" required>
+  <label for="segment-address">Address</label>
+  <input id="segment-address" type="text" name="address">
+  <label for="segment-phone">Phone</label>
+  <input id="segment-phone" type="tel" name="phone">
+  <label for="segment-url">Website</label>
+  <input id="segment-url" type="url" name="url">
+  <label for="segment-notes">Notes</label>
+  <textarea id="segment-notes" name="notes"></textarea>
+  <p>Booked?</p>
+  <label for="segment-booked-yes">Yes</label>
+  <input id="segment-booked-yes" type="radio" name="booked" value="true">
+  <label for="segment-booked-no">No</label>
+  <input id="segment-booked-no" type="radio" name="booked" value="false" checked>
+  <input type="submit" value="Submit">
+</form>

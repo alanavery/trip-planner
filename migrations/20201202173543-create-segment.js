@@ -8,10 +8,10 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      startTime: {
-        type: Sequelize.DATE
+      subcategoryId: {
+        type: Sequelize.INTEGER
       },
-      endTime: {
+      date: {
         type: Sequelize.DATE
       },
       name: {
@@ -33,9 +33,6 @@ module.exports = {
         type: Sequelize.BOOLEAN
       },
       tripId: {
-        type: Sequelize.INTEGER
-      },
-      subcategoryId: {
         type: Sequelize.INTEGER
       },
       createdAt: {

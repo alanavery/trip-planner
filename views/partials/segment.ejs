@@ -1,0 +1,7 @@
+<% segments.forEach(segment => { %>
+<div class="div-segment">
+  <h4><%= subcategories[segment.subcategoryId].name %></h4>
+  <h5><%= segment.name %></h5>
+  <p><%= segment.address %></p>
+</div>
+<% }); %>
