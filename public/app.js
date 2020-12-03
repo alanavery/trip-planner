@@ -3,23 +3,23 @@ document.addEventListener('DOMContentLoaded', () => {
   let tripDelete = document.querySelector('.trip-delete');
   let secTripEdit = document.querySelector('.sec-trip-edit');
   let secTripDelete = document.querySelector('.sec-trip-delete');
-  let buttonAddSegmentAll = document.querySelectorAll('.button-add-segment');
-  let formSegmentAll = document.querySelectorAll('.form-segment');
+  let allAddSegmentButtons = document.querySelectorAll('.add-segment-button');
   let divSegmentAll = document.querySelectorAll('.div-segment');
   let divSegmentInfoSecondaryAll = document.querySelectorAll('.div-segment-info-secondary');
   let segmentEditAll = document.querySelectorAll('.segment-edit');
   let formSegmentEditAll = document.querySelectorAll('.form-segment-edit');
   let divSegmentInfoAll = document.querySelectorAll('.div-segment-info');
   let segmentEditCancelAll = document.querySelectorAll('.segment-edit-cancel');
+  let addSegmentSec = document.querySelector('.add-segment');
+  let addSegmentDate = document.getElementById('add-segment-date');
 
   let visualReset = () => {
     secTripDelete.hidden = true;
     secTripEdit.hidden = true;
-    formSegmentAll.forEach(form => form.hidden = true);
+    addSegmentSec.hidden = true;
     formSegmentEditAll.forEach(form => form.hidden = true);
     divSegmentInfoAll.forEach(div => div.hidden = false);
     divSegmentInfoSecondaryAll.forEach(div => div.hidden = true);
-    buttonAddSegmentAll.forEach(button => button.textContent = '+');
   };
 
   tripEdit.addEventListener('click', () => {
@@ -42,16 +42,19 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  buttonAddSegmentAll.forEach(button => {
+  allAddSegmentButtons.forEach(button => {
     button.addEventListener('click', event => {
-      let selectedForm = event.target.parentNode.nextElementSibling;
-      if (selectedForm.hidden) {
-        visualReset();
-        selectedForm.hidden = false;
-        event.target.textContent = '-';
-      } else {
-        visualReset();
-      }
+      visualReset();
+      addSegmentSec.hidden = false;
+      let selDay = event.target.parentNode.parentNode;
+      addSegmentDate.value = selDay.id.substring(4);
+      // let selectedForm = event.target.parentNode.nextElementSibling;
+      // if (selectedForm.hidden) {
+      //   selectedForm.hidden = false;
+      //   event.target.textContent = '-';
+      // } else {
+      //   visualReset();
+      // }
     });
   });
 
