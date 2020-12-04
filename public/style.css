@@ -1,3 +1,10 @@
+.test-container {
+  width: 200px;
+  height: 200px;
+  margin-bottom: 20px;
+  background-color: green;
+}
+
 input, select, textarea {
   display: block;
   margin-bottom: 10px;
@@ -73,4 +80,34 @@ nav li {
   display: inline-block;
   margin-right: 20px;
   cursor: pointer;
+}
+
+/* Drag and drop test 2 */
+
+.container {
+  position: relative;
+  width: 320px;
+  height: 400px;
+}
+
+.list-item {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 90px;
+  width: 100%;
+}
+
+.item-content {
+  height: 100%;
+  border: 0px solid rgba(123, 123, 123, 0.5);
+  border-radius: 4px;
+  background-color: lightgray;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 2px 0px;
+}
+
+.box {
+  height: 100px;
+  width: 100px;
+  background-color: pink;
 }
