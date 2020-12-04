@@ -1,20 +1,21 @@
-let placeSearch;
 let autocomplete;
-
-let componentForm = {
-  street_number: 'short_name',
-  administrative_area_level_1: 'short_name',
-  postal_code: 'short_name'
-};
+let addSegmentName = document.getElementById('add-segment-name');
+let addSegmentAddress = document.getElementById('add-segment-address');
+let addSegmentPhone = document.getElementById('add-segment-phone');
+let addSegmentUrl = document.getElementById('add-segment-url');
 
 function initAutocomplete() {
   autocomplete = new google.maps.places.Autocomplete(
-    document.getElementById('search-term')
+    document.getElementById('add-segment-search')
   );
-  autocomplete.addListener('place_changed', logResults);
+  autocomplete.setFields(['name', 'formatted_address', 'formatted_phone_number', 'website']);
+  autocomplete.addListener('place_changed', fillInInfo);
 }
 
-function logResults() {
-  let place = autocomplete.getPlace();
-  console.log(place);
+function fillInInfo() {
+  let info = autocomplete.getPlace();
+  addSegmentName.value = info.name;
+  addSegmentAddress.value = info.formatted_address;
+  addSegmentPhone.value = info.formatted_phone_number;
+  addSegmentUrl.value = info.website;
 };
