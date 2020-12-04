@@ -13,9 +13,18 @@ function initAutocomplete() {
 }
 
 function fillInInfo() {
+  addSegmentAddress.value = '';
+  addSegmentPhone.value = '';
+  addSegmentUrl.value = '';
   let info = autocomplete.getPlace();
   addSegmentName.value = info.name;
-  addSegmentAddress.value = info.formatted_address;
-  addSegmentPhone.value = info.formatted_phone_number;
-  addSegmentUrl.value = info.website;
+  if (info.formatted_address) {
+    addSegmentAddress.value = info.formatted_address;
+  }
+  if (info.formatted_phone_number) {
+    addSegmentPhone.value = info.formatted_phone_number;
+  }
+  if (info.website) {
+    addSegmentUrl.value = info.website;
+  }
 };
