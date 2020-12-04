@@ -26,6 +26,18 @@
       </nav>
     </header>
     <%- body %>
+
+
+    <!-- Test -->
+    <form action="/" method="post">
+      <input type="text" name="term" id="term">
+      <input type="submit" value="Search">
+    </form>
+
+
+
+
+
     <script src="/api.js"></script>
     <script defer
       src="https://maps.googleapis.com/maps/api/js?key=<%= process.env.GOOGLE_MAPS_API_KEY %>&libraries=places&callback=initAutocomplete"></script>

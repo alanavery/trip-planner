@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/delayedaa/trip-planner#readme",
   "dependencies": {
+    "@googlemaps/google-maps-services-js": "^3.1.13",
     "axios": "^0.21.0",
     "bcrypt": "^5.0.0",
     "connect-flash": "^0.1.1",
