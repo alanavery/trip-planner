@@ -26,7 +26,7 @@ function changeIndex(item, to) {
 
 function Sortable(element, index) {
   let content = element.querySelector('.item-content');
-  let order = element.querySelector('.order');
+  // let order = element.querySelector('.order');
   let animation = gsap.to(content, {
     duration: 0.3,
     boxShadow: 'rgba(0, 0, 0, 0.2) 0px 16px 32px 0px',
@@ -50,7 +50,7 @@ function Sortable(element, index) {
   gsap.set(element, { y: index * rowSize });
   function setIndex(index) {
     sortable.index = index;
-    order.textContent = index + 1;
+    // order.textContent = index + 1;
     if (!dragger.isDragging) {
       layout();
     }

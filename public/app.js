@@ -1,5 +1,3 @@
-console.log('app.js is working');
-
 let tripEdit = document.querySelector('.trip-edit');
 let tripDelete = document.querySelector('.trip-delete');
 let secTripEdit = document.querySelector('.sec-trip-edit');
