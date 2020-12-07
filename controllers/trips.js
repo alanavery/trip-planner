@@ -101,7 +101,7 @@ router.put('/:id/:day/:segment', async (req, res) => {
   try {
     await db.segment.update({
       subcategoryId: req.body.subcategoryId,
-      date: req.body.date,
+      // date: req.body.date,
       name: req.body.name,
       address: req.body.address,
       phone: req.body.phone,

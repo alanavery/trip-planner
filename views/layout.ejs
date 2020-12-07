@@ -9,23 +9,34 @@
   </head>
 
   <body>
-    <%- include('partials/alerts') %>
+    <div class="container">
+      <%- include('partials/alerts') %>
 
-    <header>
-      <h1><a href="/">Trip Planner</a></h1>
-      <nav>
-        <ul>
-          <% if (!currentUser) { %>
-          <li><a href="/auth/signup">Sign Up</a></li>
-          <li><a href="/auth/login">Log In</a></li>
-          <% } else { %>
-          <li><a href="/trips">Dashboard</a></li>
-          <li><a href="/auth/logout">Log Out</a></li>
-          <% } %>
-        </ul>
-      </nav>
-    </header>
-    <%- body %>
+      <header>
+        <p><a class="link-index" href="/">Trip Planner</a></p>
+        <nav>
+          <ul>
+            <% if (!currentUser) { %>
+            <li><a href="/auth/signup">Sign Up</a></li>
+            <li><a href="/auth/login">Log In</a></li>
+            <form action="/auth/login" method="post">
+              <label for="login-email">Email</label>
+              <input id="login-email" type="email" name="email">
+
+              <label for="login-password">Password</label>
+              <input id="login-password" type="password" name="password">
+
+              <input type="submit" value="Log In">
+            </form>
+            <% } else { %>
+            <li><a class="link-dashboard" href="/trips">Dashboard</a></li>
+            <li><a href="/auth/logout">Log Out</a></li>
+            <% } %>
+          </ul>
+        </nav>
+      </header>
+      <%- body %>
+    </div>
   </body>
 
 </html>

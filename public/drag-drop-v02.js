@@ -2,7 +2,7 @@ gsap.registerPlugin(Draggable);
 
 let divDayMainAll = document.querySelectorAll('.div-day-main');
 let editDayOrder = document.getElementById('edit-day-order');
-let rowSize = 100;
+let rowSize = 220;
 
 let reorderArray = (array, from, to) => {
   array.splice(to, 0, array.splice(from, 1)[0]);
@@ -23,6 +23,7 @@ divDayMainAll.forEach(div => {
     Draggable.create(segment, {
       type: 'y',
       bounds: div,
+      trigger: segment.querySelector('.icon-drag'),
       onDrag: handleDrag,
       onDragEnd: handleDragEnd,
       segmentsAll: segmentsAll,
@@ -55,4 +56,5 @@ function handleDragEnd() {
     }
   });
   this.target.parentElement.previousElementSibling.querySelector('.edit-day-order').value = order;
+  this.target.parentElement.previousElementSibling.querySelector('.form-save-reorder').hidden = false;
 }
