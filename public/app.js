@@ -50,28 +50,15 @@ allAddSegmentButtons.forEach(button => {
     if (addSegmentSec.hidden) {
       visualReset();
       addSegmentSec.hidden = false;
-      let selDay = event.target.parentElement.parentElement;
-      addSegmentDate.value = selDay.id.substring(4);
+      let divday = event.target.parentElement.parentElement.parentElement;
+      let dayId = divday.id.substring(4);
+      console.log(dayId);
+      addSegmentDate.value = dayId;
     } else {
       visualReset();
     }
   });
 });
-
-// divMoreInfoAll.forEach(div => {
-//   div.addEventListener('click', event => {
-//     let selectedInfoSecondary = event.currentTarget.parentElement.nextElementSibling;
-//     let selectedSegmentBox = event.currentTarget.parentElement.parentElement.parentElement.parentElement;
-//     // let selectedFormSegmentEdit = event.currentTarget.lastElementChild;
-//     if (selectedInfoSecondary.hidden) {
-//       visualReset();
-//       selectedInfoSecondary.hidden = false;
-//       selectedSegmentBox.style.height = '100%';
-//     } else if (selectedFormSegmentEdit.hidden) {
-//       visualReset();
-//     }
-//   });
-// });
 
 buttonSegEdit.forEach(button => {
   button.addEventListener('click', event => {
@@ -121,11 +108,6 @@ buttonSegEdit.forEach(button => {
     } else {
       visualReset();
     }
-    // let selectedSegmentInfo = event.target.parentElement.parentElement;
-    // let selectedFormSegmentEdit = selectedSegmentInfo.nextElementSibling;
-    // console.log(selectedFormSegmentEdit);
-    // selectedSegmentInfo.hidden = true;
-    // selectedFormSegmentEdit.hidden = false;
   });
 });
 

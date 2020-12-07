@@ -27,7 +27,7 @@ router.post('/', async (req, res) => {
     res.redirect(`/trips/${trip.id}`);
   } catch (err) {
     req.flash('error', err.message);
-    res.redirect('/');
+    res.redirect('/trips');
   }
 });
 
@@ -43,7 +43,7 @@ router.get('/:id', async (req, res) => {
     res.render('trips/trip', { trip, subcategories, segments });
   } catch (err) {
     req.flash('error', err.message);
-    res.redirect('/');
+    res.redirect('/trips');
   }
 });
 
@@ -59,7 +59,7 @@ router.put('/:id', async (req, res) => {
     res.redirect(`/trips/${req.params.id}`);
   } catch (err) {
     req.flash('error', err.message);
-    res.redirect('/');
+    res.redirect(`/trips/${req.params.id}`);
   }
 });
 
@@ -71,7 +71,7 @@ router.delete('/:id', async (req, res) => {
     res.redirect('/trips');
   } catch (err) {
     req.flash('error', err.message);
-    res.redirect('/');
+    res.redirect('/trips');
   }
 });
 

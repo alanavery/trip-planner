@@ -157,29 +157,42 @@ h2 {
   font-weight: 800;
 }
 
-.sec-signup {
+.sec-signup-login {
   display: grid;
-  grid-template-columns: 1fr 300px 250px 1fr;
+  grid-template-columns: 1fr 180px 300px 300px 180px 1fr;
   gap: 40px;
+  margin: 60px 0 60px 0;
+  align-items: stretch;
+}
+
+.form-login {
+  height: 100%;
+}
+
+.div-signup-message {
+  grid-column-start: 2;
+}
+
+.signup-message, .login-message {
+  font-family: 'Playfair Display', serif;
+  font-size: 45px;
+  font-weight: 800;
 }
 
 .signup-message {
-  font-family: 'Playfair Display', serif;
-  font-size: 50px;
-  font-weight: 800;
+  text-align: right;
 }
 
 .div-signup-form {
   width: 300px;
-  grid-column-start: 2;
 }
 
-.sec-add-trip form, .sec-signup form {
+.sec-add-trip form, .sec-signup-login form {
   padding: 20px;
   border: solid 5px #d7dfde;
 }
 
-.sec-add-trip .button, .sec-signup .button {
+.sec-add-trip .button, .sec-signup-login .button {
   margin-top: 30px;
 }
 
