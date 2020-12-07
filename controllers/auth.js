@@ -27,11 +27,11 @@ router.post('/signup', async (req, res) => {
       })(req, res);
     } else {
       req.flash('error', 'Invalid name, email and/or password.');
-      res.redirect('/auth/signup');
+      res.redirect('/');
     }
   } catch (err) {
     req.flash('error', `An error occurred: ${err.message}`);
-    res.redirect('/auth/signup');
+    res.redirect('/');
   }
 });
 

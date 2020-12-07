@@ -1,52 +1,303 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700&family=Playfair+Display:wght@600;700;800;900&display=swap');
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 16px;
+  color: #242424;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  background-color: white;
+}
+
+.container {
+  height: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  background-color: #fcfbff;
+}
+
+label {
+  font-weight: 700;
+}
+
 input, select, textarea {
+  width: 100%;
+  padding: 5px;
   display: block;
   margin-bottom: 10px;
 }
 
+.button {
+  width: 150px;
+  height: 38px;
+  padding: 5px;
+  border-style: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  background-color: #2c4c4c;
+  font-weight: 700;
+  color: white;
+}
+
+/* Header */
+
 header {
+  padding: 40px 60px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.link-index {
+  font-family: 'Playfair Display', serif;
+  font-size: 24px;
+  font-weight: 800;
+  color: #2c4c4c;
+  text-decoration: none;
 }
 
 nav li {
+  margin-left: 60px;
   display: inline-block;
-  margin-left: 20px;
 }
 
-.sec-dashboard {
-  display: grid;
-  grid-template-columns: 1fr 2fr;
+nav a {
+  color: #242424;
+  text-decoration: none;
 }
 
-.div-trip {
-  padding: 20px;
-  border-radius: 8px;
-  margin-bottom: 20px;
-  background-color: lightgray;
+.link-dashboard {
+  font-weight: 700;
 }
 
-.sec-trip-info {
+.div-alert {
+  width: 100%;
+  padding: 10px;
+  background-color: #d7dfde;
+  font-size: 14px;
+  text-align: center;
+}
+
+/* Index page */
+
+.sec-hero-main {
+  position: relative;
+  width: 100%;
+  height: 500px;
+}
+
+.welcome-message {
+  background-color: #2c4c4c;
+  position: absolute;
+  top: 50px;
+  height: 400px;
+  width: 500px;
+  padding: 35px 60px;
+}
+
+.welcome-heading {
+  margin-bottom: 30px;
+  font-family: 'Playfair Display', serif;
+  font-size: 50px;
+  font-weight: 800;
+  color: white;
+}
+
+.welcome-body {
+  font-size: 20px;
+  color: #dcdcdc;
+  line-height: 1.8em;
+}
+
+.div-hero-main {
+  width: 80%;
+  height: 500px;
+  background-image: url('/hero-image.jpg');
+  background-size: cover;
+  background-position: center;
+  float: right;
+}
+
+/* Dashboard page */
+
+.sec-info {
+  padding: 20px 60px;
+  margin-bottom: 30px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background-color: #2c4c4c;
 }
 
-.div-trip-info {
+h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 30px;
+  font-weight: 800;
+  color: white;
+}
+
+.sec-dashboard {
+  margin-left: 60px;
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 40px;
+}
+
+h2 {
+  margin-bottom: 10px;
+  font-family: 'Playfair Display', serif;
+  font-size: 30px;
+  font-weight: 800;
+}
+
+.sec-signup-login {
+  display: grid;
+  grid-template-columns: 1fr 180px 300px 300px 180px 1fr;
+  gap: 40px;
+  margin: 60px 0 60px 0;
+  align-items: stretch;
+}
+
+.form-login {
+  height: 100%;
+}
+
+.div-signup-message {
+  grid-column-start: 2;
+}
+
+.signup-message, .login-message {
+  font-family: 'Playfair Display', serif;
+  font-size: 45px;
+  font-weight: 800;
+}
+
+.signup-message {
   text-align: right;
 }
 
+.div-signup-form {
+  width: 300px;
+}
+
+.sec-add-trip form, .sec-signup-login form {
+  padding: 20px;
+  border: solid 5px #d7dfde;
+}
+
+.sec-add-trip .button, .sec-signup-login .button {
+  margin-top: 30px;
+}
+
+.sec-trips a {
+  text-decoration: none;
+}
+
+.div-trip {
+  padding: 20px 20px 40px 20px;
+  margin-bottom: 20px;
+  border-radius: 8px 0 0 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  background-color: #2c4c4c;
+}
+
+.div-trip h3 {
+  padding-bottom: 10px;
+  font-size: 24px;
+  color: white;
+  text-decoration: none;
+}
+
+.trip-dates {
+  font-size: 24px;
+  font-weight: 400;
+  color: #e2ab82;
+}
+
+/* Trip page */
+
 .trip-edit, .trip-delete {
+  margin-left: 30px;
   display: inline-block;
-  margin-left: 20px;
+  color: #d7dfde;
   cursor: pointer;
 }
 
-.sec-days {
+.sec-trip-edit form {
+  padding: 0 60px 20px 60px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 150px;
+  column-gap: 20px;
+  align-items: end;
+}
+
+.div-trip-delete {
+  padding: 0 60px 20px 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.div-trip-delete form {
+  margin-left: 20px;
+}
+
+.add-segment form {
+  padding: 0 60px 20px 60px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 20px;
+}
+
+.sec-edit-segment form {
+  padding: 0 60px 20px 60px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 20px;
+}
+
+.div-radio-buttons {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.div-radio-buttons div {
+  width: 150px;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+
+.div-radio-buttons input {
+  margin: 0;
+}
+
+.add-segment .button, .sec-edit-segment .button {
+  margin: 30px 10px 0 0;
+  justify-self: end;
+}
+
+.div-add-button {
+  display: flex;
+  justify-content: end;
+}
+
+/* Schedule section */
+
+.sec-schedule {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 10px;
   align-items: start;
+  padding: 0 20px;
 }
 
 .div-day {
@@ -57,20 +308,92 @@ nav li {
 }
 
 .div-day-header {
+  margin-bottom: 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.div-segment {
-  padding: 20px;
-  border-radius: 8px;
-  margin-bottom: 20px;
-  background-color: teal;
+.div-day-buttons {
+  display: inline-flex;
 }
 
-.segment-edit, .segment-delete {
+.button-day {
+  width: 100px;
+  height: 30px;
+  margin: 0 0 0 10px;
+}
+
+.div-day-main {
+  position: relative;
+}
+
+.div-segment {
+  position: absolute;
+  width: 100%;
+  height: 220px;
+}
+
+.div-segment-box {
+  height: 200px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  background-color: #d7dfde;
+}
+
+.segment-info {
+  height: 100%;
+}
+
+.div-info-primary {
+  display: grid;
+  grid-template-columns: 1fr 20px;
+  align-items: center;
+  background-color: #2c4c4c;
+  padding: 10px 15px 8px 15px;
+  height: 70px;
+  border-radius: 8px 8px 0 0;
+}
+
+h4 {
+  font-size: 20px;
+  font-weight: 700;
+  color: white;
+}
+
+h5 {
+  font-size: 16px;
+  font-weight: 700;
+  color: #dcdcdc;
+}
+
+.div-info-primary img {
+  width: 100%;
+  opacity: 0.5;
+}
+
+.div-segment-info-secondary {
+  display: grid;
+  padding: 12px 15px 15px;
+  grid-template-columns: 1fr 60px;
+  gap: 10px;
+  overflow: auto;
+  height: 120px;
+}
+
+.div-segment-info-secondary p, .div-segment-info-secondary a, .div-segment-info-secondary strong, .div-segment-info-secondary span {
+  font-size: 13px;
+}
+
+.segment-info .button {
+  width: 60px;
+  font-size: 13px;
+  height: 25px;
+  padding: 0;
+}
+
+.button-seg-edit, .segment-delete {
   display: inline-block;
-  margin-right: 20px;
+  margin-bottom: 10px;
   cursor: pointer;
 }
