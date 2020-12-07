@@ -55,37 +55,37 @@ nav li {
 
 /* Schedule section */
 
-.schedule {
+.sec-schedule {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 10px;
   align-items: start;
 }
 
-.day {
+.div-day {
   padding: 20px;
   border-radius: 8px;
   margin-bottom: 20px;
   background-color: lightgray;
 }
 
-.day-header {
+.div-day-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.day-segments {
+.div-day-main {
   position: relative;
 }
 
-.segment {
+.div-segment {
   position: absolute;
   width: 100%;
   height: 100px;
 }
 
-.segment-box {
+.div-segment-box {
   height: 90px;
   overflow: hidden;
   padding: 20px;

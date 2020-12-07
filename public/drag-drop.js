@@ -91,3 +91,106 @@ function clamp(value, a, b) {
     return value;
   }
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+gsap.registerPlugin(Draggable);
+
+let divDayMainAll = document.querySelectorAll('.div-day-main');
+let rowSize = 100;
+
+let reorderArray = (array, from, to) => {
+  array.splice(to, 0, array.splice(from, 1)[0]);
+};
+
+let layout = (segments, segment, index) => {
+  gsap.to(segment, { y: getYValue(segments, index) });
+};
+
+let getYValue = (segments, index) => {
+  let yValue = 0;
+  for (let i = 0; i < index; i++) {
+    yValue += segments[i].clientHeight;
+  }
+  return yValue;
+};
+
+divDayMainAll.forEach(div => {
+  let segments = Array.from(div.querySelectorAll('.div-segment'));
+  let divHeight = 0;
+  segments.forEach(segment => {
+    divHeight += segment.clientHeight;
+  });
+  div.style.height = `${divHeight}px`;
+  segments.forEach((segment, index) => {
+    gsap.set(segment, { y: getYValue(segments, index) });
+    Draggable.create(segment, {
+      type: 'y',
+      bounds: div,
+      onDrag: handleDrag,
+      onDragEnd: handleDragEnd,
+      div: div,
+      segments: segments,
+    });
+  });
+});
+
+function handleDrag() {
+  let segments = this.vars.segments;
+  let nextSibling = this.target.nextElementSibling;
+  let previousSibling = this.target.previousElementSibling;
+  let from = segments.indexOf(this.target);
+  let to;
+  // let to = Math.round(this.y / this.target.clientHeight);
+  // if (this.hitTest(nextSibling, 20)) {
+  //   to = 1;
+  // }
+  // if (this.hitTest(previousSibling, 20)) {
+  //   to = 0;
+  // }
+  if (from !== to) {
+    reorderArray(segments, from, to);
+    segments.forEach((segment, index) => {
+      if (segment !== this.target) {
+        layout(segments, segment, index);
+      }
+      if (to === segments.length - 1) {
+        this.vars.div.appendChild(segment);
+      } else {
+        if (from > to) {
+          this.vars.div.insertBefore(segment, segments[to]);
+        } else {
+          this.vars.div.insertBefore(segment, segments[to + 1]);
+        }
+      }
+    });
+  }
+};
+
+function handleDragEnd() {
+  layout(this.vars.segments, this.target, this.vars.segments.indexOf(this.target));
+}

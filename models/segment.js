@@ -21,6 +21,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.DATE,
       validate: { isDate: { msg: 'Invalid date.' } }
     },
+    time: DataTypes.INTEGER,
     name: {
       type: DataTypes.STRING,
       validate: {

@@ -1,23 +1,25 @@
 gsap.registerPlugin(Draggable);
 
-let segments = Array.from(document.querySelectorAll('.segment'));
+let divDayMainAll = document.querySelectorAll('.div-day-main');
 let rowSize = 100;
 
-let initLists = () => {
-  let testSegments = document.querySelector('.day-segments');
-  testSegments.style.height = `${segments.length * rowSize}px`;
-  segments.forEach((container, index) => {
-    gsap.set(container, { y: index * rowSize });
-    Draggable.create(container, {
+divDayMainAll.forEach(div => {
+  let segmentsAll = Array.from(div.querySelectorAll('.div-segment'));
+  div.style.height = `${segmentsAll.length * rowSize}px`;
+  segmentsAll.forEach((segment, index) => {
+    gsap.set(segment, { y: index * rowSize });
+    Draggable.create(segment, {
       type: 'y',
-      bounds: testSegments,
+      bounds: div,
       onDrag: handleDrag,
-      onDragEnd: handleDragEnd
+      onDragEnd: handleDragEnd,
+      segmentsAll: segmentsAll,
     });
   });
-};
+});
 
 function handleDrag() {
+  let segments = this.vars.segmentsAll;
   let from = segments.indexOf(this.target);
   let to = Math.round(this.y / rowSize);
   if (from !== to) {
@@ -31,7 +33,7 @@ function handleDrag() {
 };
 
 function handleDragEnd() {
-  layout(this.target, segments.indexOf(this.target));
+  layout(this.target, this.vars.segmentsAll.indexOf(this.target));
 }
 
 let reorderArray = (array, from, to) => {
@@ -44,5 +46,3 @@ let layout = (segment, index) => {
     y: index * rowSize
   });
 };
-
-initLists();

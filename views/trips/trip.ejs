@@ -56,11 +56,12 @@
     <label for="add-segment-booked-no">No</label>
     <input id="add-segment-booked-no" type="radio" name="booked" value="false" checked>
     <input id="add-segment-date" type="hidden" name="date" value="">
+    <input id="add-segment-time" type="hidden" name="time" value="">
     <input type="submit" value="Submit">
   </form>
 </section>
 
-<section class="schedule">
+<section class="sec-schedule">
 
   <% let startDate = new Date(trip.startDate); %>
   <% let endDate = new Date(trip.endDate); %>
@@ -74,23 +75,23 @@
   <% date.setDate(startDate.getUTCDate() + i); %>
   <% let dateFormatted = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`; %>
 
-  <div id="day-<%= dateFormatted %>" class="day">
+  <div id="day-<%= dateFormatted %>" class="div-day">
 
-    <div class="day-header">
+    <div class="div-day-header">
       <h3><%= weekdays[date.getDay()] %></h3>
       <button class="add-segment-button">+</button>
     </div>
 
-    <div class="day-segments">
+    <div class="div-day-main">
 
       <% segments.forEach(segment => { %>
       <% if (`${segment.date.getUTCFullYear()}-${segment.date.getUTCMonth() + 1}-${segment.date.getUTCDate()}` === dateFormatted) { %>
 
-      <div class="segment">
-        <div class="segment-box">
+      <div class="div-segment">
+        <div class="div-segment-box">
 
-          <div class="div-segment-info">
-            <div class="div-segment-info-primary">
+          <div class="segment-info">
+            <div class="segment-info-primary">
               <h5><%= subcategories[segment.subcategoryId - 1].name %></h5>
               <h4><%= segment.name %></h4>
               <p><%= segment.notes %></p>
