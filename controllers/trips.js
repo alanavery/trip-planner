@@ -36,7 +36,10 @@ router.get('/:id', async (req, res) => {
   try {
     let trip = await db.trip.findOne({ where: { id: req.params.id } });
     let subcategories = await db.subcategory.findAll();
-    let segments = await db.segment.findAll({ where: { tripId: req.params.id } });
+    let segments = await db.segment.findAll({
+      where: { tripId: req.params.id },
+      order: [['time', 'ASC']]
+    });
     res.render('trips/trip', { trip, subcategories, segments });
   } catch (err) {
     req.flash('error', err.message);
@@ -94,7 +97,7 @@ router.post('/:id', async (req, res) => {
 });
 
 // Route: PUT /trips/:id/:segment
-router.put('/:id/:segment', async (req, res) => {
+router.put('/:id/:day/:segment', async (req, res) => {
   try {
     await db.segment.update({
       subcategoryId: req.body.subcategoryId,
@@ -114,9 +117,26 @@ router.put('/:id/:segment', async (req, res) => {
 });
 
 // Route: DELETE /trips/:id/:segment
-router.delete('/:id/:segment', async (req, res) => {
+router.delete('/:id/:day/:segment', async (req, res) => {
   try {
     await db.segment.destroy({ where: { id: req.params.segment } });
+    res.redirect(`/trips/${req.params.id}`);
+  } catch (err) {
+    req.flash('error', err.message);
+    res.redirect(`/trips/${req.params.id}`);
+  }
+});
+
+// Route: PUT /trips/reorder/:id
+router.put('/:id/:day', async (req, res) => {
+  try {
+    let array = req.body.order.split(', ');
+    console.log(array);
+    array.forEach(async (segmentId, index) => {
+      await db.segment.update({
+        time: index + 1
+      }, { where: { id: parseInt(segmentId) } });
+    });
     res.redirect(`/trips/${req.params.id}`);
   } catch (err) {
     req.flash('error', err.message);

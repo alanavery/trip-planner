@@ -56,7 +56,6 @@
     <label for="add-segment-booked-no">No</label>
     <input id="add-segment-booked-no" type="radio" name="booked" value="false" checked>
     <input id="add-segment-date" type="hidden" name="date" value="">
-    <input id="add-segment-time" type="hidden" name="time" value="">
     <input type="submit" value="Submit">
   </form>
 </section>
@@ -80,6 +79,10 @@
     <div class="div-day-header">
       <h3><%= weekdays[date.getDay()] %></h3>
       <button class="add-segment-button">+</button>
+      <form action="/trips/<%= trip.id %>/<%= dateFormatted %>/?_method=put" method="post">
+        <input class="edit-day-order" type="hidden" name="order" value="">
+        <input type="submit" value="Save">
+      </form>
     </div>
 
     <div class="div-day-main">
@@ -92,6 +95,7 @@
 
           <div class="segment-info">
             <div class="segment-info-primary">
+              <p class="segment-id" hidden><%= segment.id %></p>
               <h5><%= subcategories[segment.subcategoryId - 1].name %></h5>
               <h4><%= segment.name %></h4>
               <p><%= segment.notes %></p>
@@ -110,15 +114,15 @@
               <p>Booked: <%= segment.booked %></p>
               <% } %>
               <button class="segment-edit">Edit</button>
-              <form class="segment-delete" action="/trips/<%= trip.id %>/<%= segment.id %>/?_method=delete"
-                method="post">
+              <form class="segment-delete"
+                action="/trips/<%= trip.id %>/<%= dateFormatted %>/<%= segment.id %>/?_method=delete" method="post">
                 <input type="submit" value="Delete">
               </form>
             </div>
           </div>
 
-          <form class="form-segment-edit" action="/trips/<%= trip.id %>/<%= segment.id %>/?_method=put" method="post"
-            hidden>
+          <form class="form-segment-edit"
+            action="/trips/<%= trip.id %>/<%= dateFormatted %>/<%= segment.id %>/?_method=put" method="post" hidden>
             <label for="segment-subcategory">Category</label>
             <select name="subcategoryId" id="segment-subcategory" required>
               <option value="">Choose a category</option>

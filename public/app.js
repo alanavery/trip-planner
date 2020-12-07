@@ -49,7 +49,7 @@ allAddSegmentButtons.forEach(button => {
   button.addEventListener('click', event => {
     visualReset();
     addSegmentSec.hidden = false;
-    let selDay = event.target.parentNode.parentNode;
+    let selDay = event.target.parentElement.parentElement;
     addSegmentDate.value = selDay.id.substring(4);
   });
 });
@@ -69,7 +69,7 @@ divSegmentAll.forEach(div => {
 
 segmentEditAll.forEach(button => {
   button.addEventListener('click', event => {
-    let selectedSegmentInfo = event.target.parentNode.parentNode;
+    let selectedSegmentInfo = event.target.parentElement.parentElement;
     let selectedFormSegmentEdit = selectedSegmentInfo.nextElementSibling;
     console.log(selectedFormSegmentEdit);
     selectedSegmentInfo.hidden = true;
