@@ -19,6 +19,9 @@ let visualReset = () => {
   secEditSegment.hidden = true;
   divSegmentInfoAll.forEach(div => div.hidden = false);
   divSegmentInfoSecondaryAll.forEach(div => div.hidden = true);
+  let url = window.location.pathname;
+  console.log(url);
+  document.querySelector('.form-segment-edit').action = url + '/';
 };
 
 if (tripEdit) {

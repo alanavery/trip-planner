@@ -353,6 +353,7 @@ h2 {
   padding: 10px 15px 8px 15px;
   height: 70px;
   border-radius: 8px 8px 0 0;
+  overflow: hidden;
 }
 
 h4 {
@@ -396,4 +397,8 @@ h5 {
   display: inline-block;
   margin-bottom: 10px;
   cursor: pointer;
+}
+
+.save-button {
+  background-color: #e36d3c;
 }
