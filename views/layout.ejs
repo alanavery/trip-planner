@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/style.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/style.css" />
     <title>Trip Planner</title>
   </head>
 
@@ -16,10 +15,7 @@
         <p><a class="link-index" href="/">Trip Planner</a></p>
         <nav>
           <ul>
-            <% if (!currentUser) { %>
-            <!-- <li><a href="/auth/signup">Sign Up</a></li> -->
-            <!-- <li><a href="/auth/login">Log In</a></li> -->
-            <% } else { %>
+            <% if (currentUser) { %>
             <li><a class="link-dashboard" href="/trips">Dashboard</a></li>
             <li><a href="/auth/logout">Log Out</a></li>
             <% } %>
@@ -29,5 +25,4 @@
       <%- body %>
     </div>
   </body>
-
 </html>

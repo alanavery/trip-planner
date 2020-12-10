@@ -9,12 +9,6 @@ let isLoggedIn = require('./middleware/is-logged-in');
 let methodOverride = require('method-override');
 require('dotenv').config();
 
-// Initialize Google api
-// let {Client} = require('@googlemaps/google-maps-services-js')
-
-// Import API modules
-let axios = require('axios');
-
 // Environment variables
 let SESSION_SECRET = process.env.SESSION_SECRET;
 
@@ -30,11 +24,13 @@ app.use(express.urlencoded({ extended: false }));
 app.use(morgan('dev'));
 
 // Set up session module
-app.use(session({
-  secret: SESSION_SECRET,
-  resave: false,
-  saveUninitialized: true
-}));
+app.use(
+  session({
+    secret: SESSION_SECRET,
+    resave: false,
+    saveUninitialized: true
+  })
+);
 
 // Initialize Passport
 app.use(passport.initialize());
@@ -58,14 +54,6 @@ app.use('/trips', isLoggedIn, require('./controllers/trips'));
 // Home route: GET /
 app.get('/', (req, res) => {
   res.render('index');
-});
-
-// Test route: POST /
-app.post('/', (req, res) => {
-  axios.get(`https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=${req.body.term}&inputtype=textquery&fields=photos,formatted_address,name,rating,opening_hours,geometry&key=${process.env.GOOGLE_MAPS_API_KEY}`).then(jsonData => {
-    console.log(jsonData.data);
-    res.redirect('/');
-  });
 });
 
 // Instruct app to listen for requests

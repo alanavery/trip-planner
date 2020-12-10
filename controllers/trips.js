@@ -50,11 +50,14 @@ router.get('/:id', async (req, res) => {
 // Route: PUT /trips/:id
 router.put('/:id', async (req, res) => {
   try {
-    await db.trip.update({
-      name: req.body.name,
-      startDate: req.body.startDate,
-      endDate: req.body.endDate
-    }, { where: { id: req.params.id } });
+    await db.trip.update(
+      {
+        name: req.body.name,
+        startDate: req.body.startDate,
+        endDate: req.body.endDate
+      },
+      { where: { id: req.params.id } }
+    );
     req.flash('success', 'Trip updated.');
     res.redirect(`/trips/${req.params.id}`);
   } catch (err) {
@@ -99,16 +102,18 @@ router.post('/:id', async (req, res) => {
 // Route: PUT /trips/:id/:segment
 router.put('/:id/:day/:segment', async (req, res) => {
   try {
-    await db.segment.update({
-      subcategoryId: req.body.subcategoryId,
-      // date: req.body.date,
-      name: req.body.name,
-      address: req.body.address,
-      phone: req.body.phone,
-      url: req.body.url,
-      notes: req.body.notes,
-      booked: req.body.booked
-    }, { where: { id: req.params.segment } });
+    await db.segment.update(
+      {
+        subcategoryId: req.body.subcategoryId,
+        name: req.body.name,
+        address: req.body.address,
+        phone: req.body.phone,
+        url: req.body.url,
+        notes: req.body.notes,
+        booked: req.body.booked
+      },
+      { where: { id: req.params.segment } }
+    );
     res.redirect(`/trips/${req.params.id}`);
   } catch (err) {
     req.flash('error', err.message);
@@ -131,11 +136,13 @@ router.delete('/:id/:day/:segment', async (req, res) => {
 router.put('/:id/:day', async (req, res) => {
   try {
     let array = req.body.order.split(', ');
-    console.log(array);
     array.forEach(async (segmentId, index) => {
-      await db.segment.update({
-        time: index + 1
-      }, { where: { id: parseInt(segmentId) } });
+      await db.segment.update(
+        {
+          time: index + 1
+        },
+        { where: { id: parseInt(segmentId) } }
+      );
     });
     res.redirect(`/trips/${req.params.id}`);
   } catch (err) {

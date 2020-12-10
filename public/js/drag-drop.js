@@ -1,3 +1,4 @@
+// Register Draggable plugin with GSAP core
 gsap.registerPlugin(Draggable);
 
 let divDayMainAll = document.querySelectorAll('.div-day-main');
@@ -15,7 +16,7 @@ let layout = (segment, index) => {
   });
 };
 
-divDayMainAll.forEach(div => {
+divDayMainAll.forEach((div) => {
   let segmentsAll = Array.from(div.querySelectorAll('.div-segment'));
   div.style.height = `${segmentsAll.length * rowSize}px`;
   segmentsAll.forEach((segment, index) => {
@@ -26,7 +27,7 @@ divDayMainAll.forEach(div => {
       trigger: segment.querySelector('.icon-drag'),
       onDrag: handleDrag,
       onDragEnd: handleDragEnd,
-      segmentsAll: segmentsAll,
+      segmentsAll: segmentsAll
     });
   });
 });
@@ -43,7 +44,7 @@ function handleDrag() {
       }
     });
   }
-};
+}
 
 function handleDragEnd() {
   layout(this.target, this.vars.segmentsAll.indexOf(this.target));
@@ -52,9 +53,15 @@ function handleDragEnd() {
     if (index === 0) {
       order = order.concat(segment.querySelector('.segment-id').textContent);
     } else {
-      order = order.concat(`, ${segment.querySelector('.segment-id').textContent}`);
+      order = order.concat(
+        `, ${segment.querySelector('.segment-id').textContent}`
+      );
     }
   });
-  this.target.parentElement.previousElementSibling.querySelector('.edit-day-order').value = order;
-  this.target.parentElement.previousElementSibling.querySelector('.form-save-reorder').hidden = false;
+  this.target.parentElement.previousElementSibling.querySelector(
+    '.edit-day-order'
+  ).value = order;
+  this.target.parentElement.previousElementSibling.querySelector(
+    '.form-save-reorder'
+  ).hidden = false;
 }

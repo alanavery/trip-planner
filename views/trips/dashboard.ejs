@@ -7,15 +7,15 @@
     <h2>Add a Trip</h2>
     <form action="/trips" method="post">
       <label for="trip-name">Name</label>
-      <input id="trip-name" type="text" name="name">
+      <input id="trip-name" type="text" name="name" />
 
       <label for="trip-start-date">Start Date</label>
-      <input id="trip-start-date" type="date" name="startDate">
+      <input id="trip-start-date" type="date" name="startDate" />
 
       <label for="trip-end-date">End Date</label>
-      <input id="trip-end-date" type="date" name="endDate">
+      <input id="trip-end-date" type="date" name="endDate" />
 
-      <input class="button" type="submit" value="Add">
+      <input class="button" type="submit" value="Add" />
     </form>
   </section>
 
@@ -26,10 +26,10 @@
     <a href="/trips/<%= trip.id %>">
       <div class="div-trip">
         <h3><%= trip.name %></h3>
-        <% let startDate = new Date(trip.startDate) %>
-        <% startDate = `${startDate.getUTCMonth() + 1}.${startDate.getUTCDate()}` %>
-        <% let endDate = new Date(trip.endDate) %>
-        <% endDate = `${endDate.getUTCMonth() + 1}.${endDate.getUTCDate()}` %>
+        <% let startDate = new Date(trip.startDate) %> <% startDate =
+        `${startDate.getUTCMonth() + 1}.${startDate.getUTCDate()}` %> <% let
+        endDate = new Date(trip.endDate) %> <% endDate =
+        `${endDate.getUTCMonth() + 1}.${endDate.getUTCDate()}` %>
         <p class="trip-dates"><%= startDate %> – <%= endDate %></p>
       </div>
     </a>

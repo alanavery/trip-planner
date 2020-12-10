@@ -9,7 +9,8 @@
   color: #242424;
 }
 
-html, body {
+html,
+body {
   height: 100%;
 }
 
@@ -28,7 +29,9 @@ label {
   font-weight: 700;
 }
 
-input, select, textarea {
+input,
+select,
+textarea {
   width: 100%;
   padding: 5px;
   display: block;
@@ -119,7 +122,7 @@ nav a {
 .div-hero-main {
   width: 80%;
   height: 500px;
-  background-image: url('/hero-image.jpg');
+  background-image: url('../img/hero-image.jpg');
   background-size: cover;
   background-position: center;
   float: right;
@@ -173,7 +176,8 @@ h2 {
   grid-column-start: 2;
 }
 
-.signup-message, .login-message {
+.signup-message,
+.login-message {
   font-family: 'Playfair Display', serif;
   font-size: 45px;
   font-weight: 800;
@@ -187,12 +191,14 @@ h2 {
   width: 300px;
 }
 
-.sec-add-trip form, .sec-signup-login form {
+.sec-add-trip form,
+.sec-signup-login form {
   padding: 20px;
   border: solid 5px #d7dfde;
 }
 
-.sec-add-trip .button, .sec-signup-login .button {
+.sec-add-trip .button,
+.sec-signup-login .button {
   margin-top: 30px;
 }
 
@@ -223,7 +229,8 @@ h2 {
 
 /* Trip page */
 
-.trip-edit, .trip-delete {
+.trip-edit,
+.trip-delete {
   margin-left: 30px;
   display: inline-block;
   color: #d7dfde;
@@ -280,7 +287,8 @@ h2 {
   margin: 0;
 }
 
-.add-segment .button, .sec-edit-segment .button {
+.add-segment .button,
+.sec-edit-segment .button {
   margin: 30px 10px 0 0;
   justify-self: end;
 }
@@ -382,7 +390,10 @@ h5 {
   height: 120px;
 }
 
-.div-segment-info-secondary p, .div-segment-info-secondary a, .div-segment-info-secondary strong, .div-segment-info-secondary span {
+.div-segment-info-secondary p,
+.div-segment-info-secondary a,
+.div-segment-info-secondary strong,
+.div-segment-info-secondary span {
   font-size: 13px;
 }
 
@@ -393,7 +404,8 @@ h5 {
   padding: 0;
 }
 
-.button-seg-edit, .segment-delete {
+.button-seg-edit,
+.segment-delete {
   display: inline-block;
   margin-bottom: 10px;
   cursor: pointer;

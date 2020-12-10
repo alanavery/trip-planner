@@ -19,25 +19,28 @@ passport.deserializeUser(async (id, done) => {
 });
 
 // Set up Passport's local strategy for authentication
-passport.use(new LocalStrategy({
-  usernameField: 'email',
-  passwordField: 'password'
-}, async (email, password, done) => {
-  try {
-    let user = await db.user.findOne({ where: { email: email } });
-    if (!user) {
-      // console.log('Incorrect username.');
-      return done(null, false, { message: 'Incorrect username.' });
+passport.use(
+  new LocalStrategy(
+    {
+      usernameField: 'email',
+      passwordField: 'password'
+    },
+    async (email, password, done) => {
+      try {
+        let user = await db.user.findOne({ where: { email: email } });
+        if (!user) {
+          return done(null, false, { message: 'Incorrect username.' });
+        }
+        if (!user.validPassword(password)) {
+          return done(null, false, { message: 'Incorrect password.' });
+        }
+        return done(null, user);
+      } catch (err) {
+        return done(err);
+      }
     }
-    if (!user.validPassword(password)) {
-      // console.log('Incorrect password.');
-      return done(null, false, { message: 'Incorrect password.' });
-    }
-    return done(null, user);
-  } catch (err) {
-    return done(err);
-  }
-}));
+  )
+);
 
 // Export module
 module.exports = passport;
