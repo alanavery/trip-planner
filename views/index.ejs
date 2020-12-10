@@ -1,52 +1,55 @@
-<section class="sec-hero-main">
-  <div class="welcome-message">
-    <p class="welcome-heading">Ready to plan your next trip?</p>
-    <p class="welcome-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-      labore et dolore magna aliqua.</p>
-  </div>
-  <div class="div-hero-main">
+<!-- Main -->
+<main>
 
-  </div>
-</section>
+  <!-- Welcome -->
+  <section class="sec-welcome">
+    <div class="div-welcome-text">
+      <p class="welcome-heading">Ready to plan your next trip?</p>
+      <p class="welcome-body">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua.
+      </p>
+    </div>
+    <div class="div-welcome-img"></div>
+  </section>
 
-<section class="sec-signup-login">
-  <div class="div-signup-message">
-    <p class="signup-message">Sign up and get planning</p>
-  </div>
-  <div class="div-signup-form">
-    <form action="/auth/signup" method="post">
+  <!-- Sign up or log in -->
+  <section class="sec-signup-login">
+
+    <!-- Sign up -->
+    <p class="signup-cta">Sign up and get planning</p>
+    <form class="form" action="/auth/signup" method="post">
+
       <label for="signup-first-name">First Name</label>
-      <input id="signup-first-name" type="text" name="firstName">
+      <input id="signup-first-name" type="text" name="firstName" />
 
       <label for="signup-last-name">Last Name</label>
-      <input id="signup-last-name" type="text" name="lastName">
+      <input id="signup-last-name" type="text" name="lastName" />
 
       <label for="signup-email">Email</label>
-      <input id="signup-email" type="email" name="email">
+      <input id="signup-email" type="email" name="email" />
 
       <label for="signup-password">Password</label>
-      <input id="signup-password" type="password" name="password">
+      <input id="signup-password" type="password" name="password" />
 
-      <input class="button" type="submit" value="Sign Up">
-    </form>
-  </div>
-  <div>
-    <form class="form-login" action="/auth/login" method="post">
-      <div class="div-login-email">
-        <label for="login-email">Email</label>
-        <input id="login-email" type="email" name="email">
-      </div>
-      <div>
-        <label for="login-password">Password</label>
-        <input id="login-password" type="password" name="password">
-      </div>
-      <div>
-        <input class="button" type="submit" value="Log In">
-      </div>
-    </form>
-  </div>
-  <div>
-    <p class="login-message">Or log in here</p>
-  </div>
+      <input class="button button2" type="submit" value="Sign Up" />
 
-</section>
+    </form>
+
+    <!-- Log in -->
+    <form class="form" action="/auth/login" method="post">
+
+      <label for="login-email">Email</label>
+      <input id="login-email" type="email" name="email" />
+
+      <label for="login-password">Password</label>
+      <input id="login-password" type="password" name="password" />
+
+      <input class="button button2" type="submit" value="Log In" />
+
+    </form>
+    <p class="login-cta">Or log in here</p>
+
+  </section>
+
+</main>

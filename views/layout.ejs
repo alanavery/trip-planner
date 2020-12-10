@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,9 +9,12 @@
   </head>
 
   <body>
-    <div class="container">
+    <div class="page-container">
+
+      <!-- Alerts -->
       <%- include('partials/alerts') %>
 
+      <!-- Header -->
       <header>
         <p><a class="link-index" href="/">Trip Planner</a></p>
         <nav>
@@ -22,7 +26,11 @@
           </ul>
         </nav>
       </header>
+
+      <!-- Main -->
       <%- body %>
+
     </div>
   </body>
+
 </html>
