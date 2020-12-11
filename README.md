@@ -26,9 +26,9 @@ Initial planning for the app consisted of three elements: wireframes, user stori
 
 ### Wireframes
 
-![ERD](reference/dashboard-01-default-desktop.png)
-![ERD](reference/trip-01-default-desktop.png)
-![ERD](reference/trip-02-default-desktop.png)
+![ERD](reference/img/dashboard-01-default-desktop.png)
+![ERD](reference/img/trip-01-default-desktop.png)
+![ERD](reference/img/trip-02-default-desktop.png)
 
 ### User Stories
 
@@ -38,7 +38,53 @@ Initial planning for the app consisted of three elements: wireframes, user stori
 
 ### ERD
 
-![ERD](reference/trip-planner-erd.png)
+![ERD](reference/img/trip-planner-erd.png)
+
+---
+
+## Installation
+
+Here are instructions for installing the app on your local machine.
+
+1. Clone the copy to your local machine.
+
+```
+git clone https://github.com/delayedaa/trip-planner
+```
+
+2. Install the required dependencies.
+
+```
+npm install
+```
+
+3. Create a new file named `.env` and copy the content below into it. Set `SESSION_SECRET` equal to the string of your choosing. `GOOGLE_MAPS_API_KEY` must be set to your personal API key. For instructions on acquiring a key, visit the [Google Cloud Platform Console.](https://developers.google.com/maps/gmp-get-started)
+
+```
+SESSION_SECRET=''
+GOOGLE_MAPS_API_KEY=''
+```
+
+4. This app utilizes PostgreSQL for its database system. If you don't have PostgreSQL installed on your local machine, you can download it [here.](https://www.postgresql.org/download/)
+
+5. With PostgreSQL installed, use Sequelize to create a database on your local machine named `trip_planner_development`.
+
+```
+sequelize db:create trip_planner_development
+```
+
+6. Use Sequelize again to migrate the app's models to your local database, then seed those models.
+
+```
+sequelize db:migrate
+sequelize db:seed:all
+```
+
+7. Start the server. Note: the app is set up to run on port 3000, but you can configure that in `server.js`.
+
+```
+npm start
+```
 
 <!-- ---
 
@@ -111,26 +157,6 @@ In addition to the four key events and their functions, there are a number of ot
 | `handlePlayAgain`     | Resets key data, such as the `possibilities` array, as well as visual elements              |
 | `fadePerson`          | Fades and unfades character faces                                                           |
 | `toggleInstructions`  | Hides and shows the instructions                                                            |
-
----
-
-## Installation
-
-Instructions for accessing the project's working files on your local computer are included below.
-
-1. Fork a copy of the game's repository [here.](https://github.com/delayedaa/guess-who.git)
-
-2. Clone the copy to your local computer by typing the following code in your terminal:
-
-```
-git clone https://github.com/delayedaa/guess-who.git
-```
-
-3. To open the project, navigate to the cloned directory and open `index.html` in your browser by typing the following code in your terminal:
-
-```
-open index.html
-```
 
 ---
 
