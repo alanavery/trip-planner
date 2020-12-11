@@ -2,7 +2,6 @@
 gsap.registerPlugin(Draggable);
 
 let divDayMainAll = document.querySelectorAll('.div-day-main');
-let editDayOrder = document.getElementById('edit-day-order');
 let rowSize = 220;
 
 let reorderArray = (array, from, to) => {
@@ -53,15 +52,11 @@ function handleDragEnd() {
     if (index === 0) {
       order = order.concat(segment.querySelector('.segment-id').textContent);
     } else {
-      order = order.concat(
-        `, ${segment.querySelector('.segment-id').textContent}`
-      );
+      order = order.concat(`, ${segment.querySelector('.segment-id').textContent}`);
     }
   });
+  this.target.parentElement.previousElementSibling.querySelector('.segment-order').value = order;
   this.target.parentElement.previousElementSibling.querySelector(
-    '.edit-day-order'
-  ).value = order;
-  this.target.parentElement.previousElementSibling.querySelector(
-    '.form-save-reorder'
+    '.form-segment-order'
   ).hidden = false;
 }

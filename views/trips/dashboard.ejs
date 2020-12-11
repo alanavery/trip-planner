@@ -37,7 +37,7 @@
         <% startDate = `${startDate.getUTCMonth() + 1}.${startDate.getUTCDate()}` %>
         <% let endDate = new Date(trip.endDate) %>
         <% endDate = `${endDate.getUTCMonth() + 1}.${endDate.getUTCDate()}` %>
-        <p class="trip-dates"><%= startDate %> – <%= endDate %></p>
+        <p class="dates"><%= startDate %> – <%= endDate %></p>
       </div>
     </a>
     <% }); %>

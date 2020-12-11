@@ -1,232 +1,211 @@
+<!-- Add/edit segment popup -->
+<div class="div-popup" hidden>
+  <form class="form-add-edit-segment form" action="/trips/<%= trip.id %>" method="post">
+
+    <div>
+      <input id="form-segment-date" type="hidden" name="date" value="">
+
+      <label for="form-segment-subcategory">Category</label>
+      <select id="form-segment-subcategory" name="subcategoryId" required>
+        <option value="">Choose a category</option>
+        <% subcategories.forEach(subcategory => { %>
+        <option value="<%= subcategory.id %>"><%= subcategory.name %></option>
+        <% }) %>
+      </select>
+
+      <label for="form-segment-search">Search</label>
+      <input id="form-segment-search" type="text" name="search">
+    </div>
+
+    <div>
+      <label for="form-segment-name">Name</label>
+      <input id="form-segment-name" type="text" name="name" required>
+
+      <label for="form-segment-address">Address</label>
+      <input id="form-segment-address" type="text" name="address">
+
+      <label for="form-segment-phone">Phone</label>
+      <input id="form-segment-phone" type="tel" name="phone">
+
+      <label for="form-segment-url">Website</label>
+      <input id="form-segment-url" type="url" name="url">
+    </div>
+
+    <div>
+      <label for="form-segment-notes">Notes</label>
+      <textarea id="form-segment-notes" name="notes"></textarea>
+
+      <div class="div-radio-buttons">
+        <p><strong>Booked?</strong></p>
+        <div>
+          <label for="form-segment-booked-yes">Yes</label>
+          <input id="form-segment-booked-yes" type="radio" name="booked" value="true">
+        </div>
+        <div>
+          <label for="form-segment-booked-no">No</label>
+          <input id="form-segment-booked-no" type="radio" name="booked" value="false" checked>
+        </div>
+      </div>
+
+      <div class="div-form-buttons">
+        <input class="button button2 button4" type="submit" value="Submit">
+        <button class="button button2 button4 cancel">Cancel</button>
+      </div>
+    </div>
+
+  </form>
+  <div class="div-fade"></div>
+</div>
+
 <!-- Subheader -->
 <section class="sec-subheader">
-  <div>
-    <h1><%= trip.name %></h1>
-  </div>
-  <div>
-    <p class="trip-edit">Edit</p>
-    <p class="trip-delete">Delete</p>
-  </div>
+  <h1><%= trip.name %></h1>
+  <ul>
+    <li class="link-trip-edit">Edit</li>
+    <li class="link-trip-delete">Delete</li>
+  </ul>
 </section>
 
-<!-- Drop-down edit menu -->
-<section class="sec-trip-edit" hidden>
-  <form action="/trips/<%= trip.id %>/?_method=put" method="post">
-    <div>
-      <label for="trip-name">Name</label>
-      <input id="trip-name" type="text" name="name" value="<%= trip.name %>">
-    </div>
-    <div>
-      <label for="trip-start-date">Start Date</label>
-      <input id="trip-start-date" type="date" name="startDate" value="<%= trip.startDate %>">
-    </div>
-    <div>
-      <label for="trip-end-date">End Date</label>
-      <input id="trip-end-date" type="date" name="endDate" value="<%= trip.endDate %>">
-    </div>
-    <div class="div-update">
+<!-- Trip forms -->
+<section class="sec-trip-forms">
+
+  <!-- Edit trip -->
+  <div class="div-edit-trip" hidden>
+    <form class="form-edit-trip" action="/trips/<%= trip.id %>/?_method=put" method="post">
+
+      <div>
+        <label for="edit-trip-name">Name</label>
+        <input id="edit-trip-name" type="text" name="name" value="<%= trip.name %>">
+      </div>
+
+      <div>
+        <label for="edit-trip-start-date">Start Date</label>
+        <input id="edit-trip-start-date" type="date" name="startDate" value="<%= trip.startDate %>">
+      </div>
+
+      <div>
+        <label for="edit-trip-end-date">End Date</label>
+        <input id="edit-trip-end-date" type="date" name="endDate" value="<%= trip.endDate %>">
+      </div>
+
       <input class="button" type="submit" value="Update">
-    </div>
-  </form>
-</section>
 
-<!-- Drop-down delete menu -->
-<section class="sec-trip-delete" hidden>
-  <div class="div-trip-delete">
-    <p>Are you sure you want to delete this trip?</p>
-    <form action="/trips/<%= trip.id %>/?_method=delete" method="post">
-      <input class="button" type="submit" value="Delete">
     </form>
   </div>
+
+  <!-- Delete trip -->
+  <div class="div-delete-trip" hidden>
+    <div class="form-delete-trip">
+      <p>Are you sure you want to delete this trip?</p>
+      <form action="/trips/<%= trip.id %>/?_method=delete" method="post">
+        <input class="button button3" type="submit" value="Delete">
+      </form>
+    </div>
+  </div>
+
 </section>
 
-<!-- Drop-down add menu -->
-<section class="add-segment" hidden>
-  <form action="/trips/<%= trip.id %>" method="post">
-    <div>
-      <label for="add-segment-subcategory">Category</label>
-      <select name="subcategoryId" id="add-segment-subcategory" required>
-        <option value="">Choose a category</option>
-        <% subcategories.forEach(subcategory => { %>
-        <option value="<%= subcategory.id %>"><%= subcategory.name %></option>
-        <% }); %>
-      </select>
-      <label for="add-segment-search">Search</label>
-      <input id="add-segment-search" type="text" name="search">
-    </div>
-    <div>
-      <label for="add-segment-name">Name</label>
-      <input id="add-segment-name" type="text" name="name" required>
-      <label for="add-segment-address">Address</label>
-      <input id="add-segment-address" type="text" name="address">
-      <label for="add-segment-phone">Phone</label>
-      <input id="add-segment-phone" type="tel" name="phone">
-      <label for="add-segment-url">Website</label>
-      <input id="add-segment-url" type="url" name="url">
-    </div>
-    <div>
-      <label for="add-segment-notes">Notes</label>
-      <textarea id="add-segment-notes" name="notes"></textarea>
-      <div class="div-radio-buttons">
-        <p>Booked?</p>
-        <div>
-          <label for="add-segment-booked-yes">Yes</label>
-          <input id="add-segment-booked-yes" type="radio" name="booked" value="true">
-          <label for="add-segment-booked-no">No</label>
-          <input id="add-segment-booked-no" type="radio" name="booked" value="false" checked>
+<!-- Main -->
+<main>
+
+  <!-- Schedule -->
+  <section class="sec-schedule">
+
+    <!-- Calculate number of days from start date through end date -->
+    <% let startDate = new Date(trip.startDate) %>
+    <% let endDate = new Date(trip.endDate) %>
+    <% let numDays = Math.floor((endDate - startDate) / (1000 * 60 * 60 * 24)) + 1 %>
+    <% let weekdays = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'] %>
+
+    <!-- Render each day -->
+    <% for (let i = 0; i < numDays; i++) { %>
+    <% let date = new Date() %>
+    <% date.setDate(startDate.getUTCDate() + i) %>
+    <% let dateFormatted = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}` %>
+
+    <div id="day-<%= dateFormatted %>" class="div-day">
+
+      <!-- Day header -->
+      <div class="div-day-header">
+        <p class="dates"><%= `${weekdays[date.getDay()]} ${date.getMonth() + 1}.${date.getDate()}` %></p>
+        <div class="div-day-buttons">
+          <form class="form-segment-order" action="/trips/<%= trip.id %>/<%= dateFormatted %>/?_method=put"
+            method="post" hidden>
+            <input class="segment-order" type="hidden" name="order" value="">
+            <input class="button button4 save" type="submit" value="Save">
+          </form>
+          <button class="link-add-segment button button4">Add</button>
         </div>
       </div>
-      <div class="div-add-button">
-        <input id="add-segment-date" type="hidden" name="date" value="">
-        <input class="button" type="submit" value="Submit">
-      </div>
-    </div>
-  </form>
-</section>
 
-<!-- Drop-down edit menu -->
-<section class="sec-edit-segment" hidden>
-  <form class="form-segment-edit" action="/trips/<%= trip.id %>/" method="post">
-    <div>
-      <label for="segment-subcategory">Category</label>
-      <select name="subcategoryId" id="segment-subcategory" required>
-        <option value="">Choose a category</option>
-        <% subcategories.forEach(subcategory => { %>
-        <option value="<%= subcategory.id %>"><%= subcategory.name %></option>
-        <% }); %>
-      </select>
-      <!-- <input type="hidden" name="date" value=""> -->
-    </div>
-    <div>
-      <label for="segment-name">Name</label>
-      <input id="segment-name" type="text" name="name" value="" required>
-      <label for="segment-address">Address</label>
-      <input id="segment-address" type="text" name="address" value="">
-      <label for="segment-phone">Phone</label>
-      <input id="segment-phone" type="tel" name="phone" value="">
-      <label for="segment-url">Website</label>
-      <input id="segment-url" type="url" name="url" value="">
-    </div>
-    <div>
-      <label for="segment-notes">Notes</label>
-      <textarea id="segment-notes" name="notes"></textarea>
-      <div class="div-radio-buttons">
-        <p>Booked?</p>
-        <div>
-          <label for="segment-booked-yes">Yes</label>
-          <input id="segment-booked-yes" type="radio" name="booked" value="true" checked>
-          <label for="segment-booked-no">No</label>
-          <input id="segment-booked-no" type="radio" name="booked" value="false">
-        </div>
-      </div>
-      <div class="div-add-button">
-        <input class="button" type="submit" value="Update">
-        <button class="segment-edit-cancel button">Cancel</button>
-      </div>
-    </div>
-  </form>
-</section>
+      <!-- Day main -->
+      <div class="div-day-main">
 
-<!-- Main schedule section -->
-<section class="sec-schedule">
+        <!-- Render each segment -->
+        <% segments.forEach(segment => { %>
+        <% if (`${segment.date.getUTCFullYear()}-${segment.date.getUTCMonth() + 1}-${segment.date.getUTCDate()}` === dateFormatted) { %>
 
-  <% let startDate = new Date(trip.startDate); %>
-  <% let endDate = new Date(trip.endDate); %>
-  <% let numDays = Math.floor((endDate - startDate) / (1000 * 60 * 60 * 24)) + 1; %>
-  <% let weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']; %>
+        <div class="div-segment">
+          <div class="div-segment-box">
 
-  <!-- Render each day -->
-  <% for (let i = 0; i < numDays; i++) { %>
-
-  <% let date = new Date(); %>
-  <% date.setDate(startDate.getUTCDate() + i); %>
-  <% let dateFormatted = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`; %>
-
-  <div id="day-<%= dateFormatted %>" class="div-day">
-
-    <!-- Day header -->
-    <div class="div-day-header">
-      <h3><%= weekdays[date.getDay()] %></h3>
-      <div class="div-day-buttons">
-        <form class="form-save-reorder" action="/trips/<%= trip.id %>/<%= dateFormatted %>/?_method=put" method="post"
-          hidden>
-          <input class="edit-day-order" type="hidden" name="order" value="">
-          <input class="button-day button save-button" type="submit" value="Save">
-        </form>
-        <button class="add-segment-button button-day button">Add</button>
-      </div>
-    </div>
-
-    <!-- Day main area -->
-    <div class="div-day-main">
-
-      <% segments.forEach(segment => { %>
-      <% if (`${segment.date.getUTCFullYear()}-${segment.date.getUTCMonth() + 1}-${segment.date.getUTCDate()}` === dateFormatted) { %>
-
-      <!-- Segment -->
-      <div class="div-segment">
-        <div class="div-segment-box">
-
-          <!-- Segment primary info -->
-          <div class="segment-info">
+            <!-- Primary info -->
             <div class="div-info-primary">
               <div>
                 <p class="segment-id" hidden><%= segment.id %></p>
-                <h5 class="seg-subcategory"><%= subcategories[segment.subcategoryId - 1].name %></h5>
-                <h4 class="seg-name"><%= segment.name %></h4>
+                <p class="segment-date" hidden><%= dateFormatted %></p>
+                <h5 class="segment-subcategory"><%= subcategories[segment.subcategoryId - 1].name %></h5>
+                <h4 class="segment-name"><%= segment.name %></h4>
               </div>
               <div>
                 <img class="icon-drag" src="/img/icon-drag.svg">
               </div>
             </div>
 
-            <!-- Segment secondary info -->
-            <div class="div-segment-info-secondary">
-              <div class="div-contact-info">
+            <!-- Secondary info -->
+            <div class="div-info-secondary">
+              <div>
                 <% if (segment.address) { %>
-                <p><strong>Address:</strong> <span class="seg-address"><%= segment.address %></span></p>
+                <p><strong>Address:</strong> <span class="segment-address"><%= segment.address %></span></p>
                 <% } %>
                 <% if (segment.phone) { %>
-                <p><strong>Phone:</strong> <span class="seg-phone"><%= segment.phone %></span></p>
+                <p><strong>Phone:</strong> <span class="segment-phone"><%= segment.phone %></span></p>
                 <% } %>
                 <% if (segment.url) { %>
-                <p><strong>Website:</strong> <a class="seg-url" href="<%= segment.url %>"><span
-                      class="seg-address">Link</a></p>
+                <p><strong>Website:</strong> <a class="segment-url" href="<%= segment.url %>">Link</a></p>
                 <% } %>
                 <% if (segment.notes) { %>
-                <p><strong>Notes:</strong> <span class="seg-notes"><%= segment.notes %></span></p>
+                <p><strong>Notes:</strong> <span class="segment-notes"><%= segment.notes %></span></p>
                 <% } %>
                 <% if (segment.booked) { %>
-                <p><strong>Booked:</strong> <span class="seg-booked">Yes</span></p>
+                <p><strong>Booked:</strong> <span class="segment-booked">Yes</span></p>
                 <% } else { %>
-                <p><strong>Booked:</strong> <span class="seg-booked">No</span></p>
+                <p><strong>Booked:</strong> <span class="segment-booked">No</span></p>
                 <% } %>
               </div>
               <div>
-                <button class="button-seg-edit button">Edit</button>
-                <form class="segment-delete"
-                  action="/trips/<%= trip.id %>/<%= dateFormatted %>/<%= segment.id %>/?_method=delete" method="post">
-                  <input class="button" type="submit" value="Delete">
+                <button class="link-edit-segment button button5">Edit</button>
+                <form action="/trips/<%= trip.id %>/<%= dateFormatted %>/<%= segment.id %>/?_method=delete"
+                  method="post">
+                  <input class="button button5" type="submit" value="Delete">
                 </form>
               </div>
             </div>
+
           </div>
-
-
         </div>
-      </div>
 
-      <% } %>
-      <% }); %>
+        <% } %>
+        <% }); %>
+
+      </div>
 
     </div>
 
-  </div>
+    <% } %>
 
-  <% } %>
+  </section>
 
-</section>
-
+</main>
 
 <!-- Page scripts -->
 <script src="/js/api.js"></script>

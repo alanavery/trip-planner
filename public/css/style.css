@@ -6,9 +6,9 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+  color: #242424;
   font-family: 'Nunito Sans', sans-serif;
   font-size: 16px;
-  color: #242424;
 }
 
 html,
@@ -47,7 +47,6 @@ select,
 textarea {
   width: 100%;
   padding: 5px;
-  display: block;
   margin-bottom: 10px;
 }
 
@@ -59,13 +58,37 @@ textarea {
   padding: 5px;
   border-style: none;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  color: white;
   background-color: #2c4c4c;
   font-weight: 700;
-  color: white;
+  cursor: pointer;
 }
 
 .button2 {
   margin-top: 30px;
+}
+
+.button3 {
+  margin-left: 20px;
+}
+
+.button4 {
+  width: 100px;
+  height: 30px;
+  margin-left: 10px;
+}
+
+.button5 {
+  width: 60px;
+  height: 25px;
+  padding: 0;
+  margin-bottom: 10px;
+  font-size: 13px;
+}
+
+.save {
+  margin-bottom: 0;
+  background-color: #e36d3c;
 }
 
 /* Header and primary navigation */
@@ -86,10 +109,10 @@ header {
 }
 
 .link-index {
+  color: #2c4c4c;
   font-family: 'Playfair Display', serif;
   font-size: 24px;
   font-weight: 800;
-  color: #2c4c4c;
 }
 
 nav li {
@@ -119,6 +142,20 @@ nav li {
   background-color: #2c4c4c;
 }
 
+.welcome-heading {
+  margin-bottom: 30px;
+  color: white;
+  font-family: 'Playfair Display', serif;
+  font-size: 50px;
+  font-weight: 800;
+}
+
+.welcome-body {
+  color: #dcdcdc;
+  font-size: 20px;
+  line-height: 1.8em;
+}
+
 .div-welcome-img {
   float: right;
   width: 80%;
@@ -133,20 +170,6 @@ nav li {
   display: grid;
   grid-template-columns: 1fr 180px 300px 300px 180px 1fr;
   gap: 40px;
-}
-
-.welcome-heading {
-  margin-bottom: 30px;
-  font-family: 'Playfair Display', serif;
-  font-size: 50px;
-  font-weight: 800;
-  color: white;
-}
-
-.welcome-body {
-  font-size: 20px;
-  color: #dcdcdc;
-  line-height: 1.8em;
 }
 
 .signup-cta,
@@ -179,14 +202,6 @@ nav li {
   gap: 40px;
 }
 
-.div-trip {
-  padding: 20px 20px 40px 20px;
-  border-radius: 8px 0 0 8px;
-  margin-bottom: 20px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-  background-color: #2c4c4c;
-}
-
 h1,
 h2 {
   font-family: 'Playfair Display', serif;
@@ -202,105 +217,107 @@ h2 {
   margin-bottom: 10px;
 }
 
+.div-trip {
+  padding: 20px 20px 40px 20px;
+  border-radius: 8px 0 0 8px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  background-color: #2c4c4c;
+}
+
 h3 {
   padding-bottom: 10px;
-  font-size: 24px;
   color: white;
+  font-size: 24px;
   text-decoration: none;
 }
 
-.trip-dates {
+.dates {
+  color: #e2ab82;
   font-size: 24px;
   font-weight: 700;
-  color: #e2ab82;
 }
 
 /* Trip page */
 
-.trip-edit,
-.trip-delete {
+/* Add/edit segment popup */
+
+.form-add-edit-segment {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: 2;
+  width: 400px;
+  margin: -335px 0 0 -200px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.7);
+  background-color: white;
+}
+
+.div-radio-buttons {
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.div-radio-buttons div {
+  text-align: center;
+}
+
+.div-form-buttons {
+  float: right;
+}
+
+.div-fade {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  opacity: 0.4;
+}
+
+/* Subheader and trip forms */
+
+.sec-subheader li {
   margin-left: 30px;
   display: inline-block;
   color: #d7dfde;
   cursor: pointer;
 }
 
-.sec-trip-edit form {
+.sec-trip-forms {
   padding: 0 60px 20px 60px;
+}
+
+.form-edit-trip {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 150px;
   column-gap: 20px;
   align-items: end;
 }
 
-.div-trip-delete {
-  padding: 0 60px 20px 60px;
+.form-delete-trip {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.div-trip-delete form {
-  margin-left: 20px;
-}
-
-.add-segment form {
-  padding: 0 60px 20px 60px;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  column-gap: 20px;
-}
-
-.sec-edit-segment form {
-  padding: 0 60px 20px 60px;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  column-gap: 20px;
-}
-
-.div-radio-buttons {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-}
-
-.div-radio-buttons div {
-  width: 150px;
-  display: flex;
-  justify-content: end;
-  align-items: center;
-}
-
-.div-radio-buttons input {
-  margin: 0;
-}
-
-.add-segment .button,
-.sec-edit-segment .button {
-  margin: 30px 10px 0 0;
-  justify-self: end;
-}
-
-.div-add-button {
-  display: flex;
-  justify-content: end;
-}
-
-/* Schedule section */
+/* Schedule */
 
 .sec-schedule {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 10px;
-  align-items: start;
   padding: 0 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  gap: 10px;
+  align-items: stretch;
 }
 
 .div-day {
-  padding: 20px;
+  padding: 20px 20px 0 20px;
   border-radius: 8px;
-  margin-bottom: 20px;
-  background-color: lightgray;
+  background-color: #dcdcdc;
 }
 
 .div-day-header {
@@ -310,14 +327,12 @@ h3 {
   align-items: center;
 }
 
-.div-day-buttons {
-  display: inline-flex;
+.div-day-header .dates {
+  color: #2c4c4c;
 }
 
-.button-day {
-  width: 100px;
-  height: 30px;
-  margin: 0 0 0 10px;
+.div-day-buttons {
+  display: inline-flex;
 }
 
 .div-day-main {
@@ -337,31 +352,30 @@ h3 {
   background-color: #d7dfde;
 }
 
-.segment-info {
-  height: 100%;
-}
-
 .div-info-primary {
+  height: 70px;
+  padding: 10px 15px 8px 15px;
+  border-radius: 8px 8px 0 0;
   display: grid;
   grid-template-columns: 1fr 20px;
   align-items: center;
   background-color: #2c4c4c;
-  padding: 10px 15px 8px 15px;
-  height: 70px;
-  border-radius: 8px 8px 0 0;
-  overflow: hidden;
+  overflow: auto;
+}
+
+h4,
+h5 {
+  font-weight: 700;
 }
 
 h4 {
-  font-size: 20px;
-  font-weight: 700;
   color: white;
+  font-size: 20px;
 }
 
 h5 {
-  font-size: 16px;
-  font-weight: 700;
   color: #dcdcdc;
+  font-size: 16px;
 }
 
 .div-info-primary img {
@@ -369,36 +383,18 @@ h5 {
   opacity: 0.5;
 }
 
-.div-segment-info-secondary {
+.div-info-secondary {
+  height: 120px;
+  padding: 12px 15px;
+  overflow: auto;
   display: grid;
-  padding: 12px 15px 15px;
   grid-template-columns: 1fr 60px;
   gap: 10px;
-  overflow: auto;
-  height: 120px;
 }
 
-.div-segment-info-secondary p,
-.div-segment-info-secondary a,
-.div-segment-info-secondary strong,
-.div-segment-info-secondary span {
+.div-info-secondary p,
+.div-info-secondary a,
+.div-info-secondary strong,
+.div-info-secondary span {
   font-size: 13px;
-}
-
-.segment-info .button {
-  width: 60px;
-  font-size: 13px;
-  height: 25px;
-  padding: 0;
-}
-
-.button-seg-edit,
-.segment-delete {
-  display: inline-block;
-  margin-bottom: 10px;
-  cursor: pointer;
-}
-
-.save-button {
-  background-color: #e36d3c;
 }

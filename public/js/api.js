@@ -1,30 +1,35 @@
 let autocomplete;
-let addSegmentName = document.getElementById('add-segment-name');
-let addSegmentAddress = document.getElementById('add-segment-address');
-let addSegmentPhone = document.getElementById('add-segment-phone');
-let addSegmentUrl = document.getElementById('add-segment-url');
+let formSegmentSearch = document.getElementById('form-segment-search');
+let formSegmentName = document.getElementById('form-segment-name');
+let formSegmentAddress = document.getElementById('form-segment-address');
+let formSegmentPhone = document.getElementById('form-segment-phone');
+let formSegmentUrl = document.getElementById('form-segment-url');
 
 function initAutocomplete() {
-  autocomplete = new google.maps.places.Autocomplete(
-    document.getElementById('add-segment-search')
-  );
+  autocomplete = new google.maps.places.Autocomplete(formSegmentSearch);
   autocomplete.setFields(['name', 'formatted_address', 'formatted_phone_number', 'website']);
   autocomplete.addListener('place_changed', fillInInfo);
 }
 
 function fillInInfo() {
-  addSegmentAddress.value = '';
-  addSegmentPhone.value = '';
-  addSegmentUrl.value = '';
+  formSegmentAddress.value = '';
+  formSegmentPhone.value = '';
+  formSegmentUrl.value = '';
   let info = autocomplete.getPlace();
-  addSegmentName.value = info.name;
+  formSegmentName.value = info.name;
   if (info.formatted_address) {
-    addSegmentAddress.value = info.formatted_address;
+    formSegmentAddress.value = info.formatted_address;
   }
   if (info.formatted_phone_number) {
-    addSegmentPhone.value = info.formatted_phone_number;
+    formSegmentPhone.value = info.formatted_phone_number;
   }
   if (info.website) {
-    addSegmentUrl.value = info.website;
+    formSegmentUrl.value = info.website;
   }
-};
+}
+
+formSegmentSearch.addEventListener('keydown', (event) => {
+  if (event.key === 'Enter') {
+    event.preventDefault();
+  }
+});
