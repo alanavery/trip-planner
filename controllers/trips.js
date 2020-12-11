@@ -65,7 +65,7 @@ router.put('/:id', async (req, res) => {
     res.redirect(`/trips/${req.params.id}`);
   } catch (err) {
     req.flash('error', err.message);
-    res.redirect(`/trips/${req.params.id}`);
+    res.redirect('/trips');
   }
 });
 
@@ -98,11 +98,11 @@ router.post('/:id', async (req, res) => {
     res.redirect(`/trips/${req.params.id}`);
   } catch (err) {
     req.flash('error', err.message);
-    res.redirect(`/trips/${req.params.id}`);
+    res.redirect('/trips');
   }
 });
 
-// Route: PUT /trips/:id/:segment
+// Route: PUT /trips/:id/:day/:segment
 router.put('/:id/:day/:segment', async (req, res) => {
   try {
     await db.segment.update(
@@ -120,22 +120,22 @@ router.put('/:id/:day/:segment', async (req, res) => {
     res.redirect(`/trips/${req.params.id}`);
   } catch (err) {
     req.flash('error', err.message);
-    res.redirect(`/trips/${req.params.id}`);
+    res.redirect('/trips');
   }
 });
 
-// Route: DELETE /trips/:id/:segment
+// Route: DELETE /trips/:id/:day/:segment
 router.delete('/:id/:day/:segment', async (req, res) => {
   try {
     await db.segment.destroy({ where: { id: req.params.segment } });
     res.redirect(`/trips/${req.params.id}`);
   } catch (err) {
     req.flash('error', err.message);
-    res.redirect(`/trips/${req.params.id}`);
+    res.redirect('/trips');
   }
 });
 
-// Route: PUT /trips/reorder/:id
+// Route: PUT /trips/:id/:day
 router.put('/:id/:day', async (req, res) => {
   try {
     let array = req.body.order.split(', ');
@@ -150,7 +150,7 @@ router.put('/:id/:day', async (req, res) => {
     res.redirect(`/trips/${req.params.id}`);
   } catch (err) {
     req.flash('error', err.message);
-    res.redirect(`/trips/${req.params.id}`);
+    res.redirect('/trips');
   }
 });
 
