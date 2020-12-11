@@ -32,11 +32,15 @@ Initial planning for the app consisted of three elements: wireframes, user stori
 
 ### User Stories
 
-- Who: travelers who like to plan their trips in advance; organized and disorganized travelers alike
-- What: an easy way to record potential trip plans—dinner at a restaurant, for example—and see if and how they fit into your schedule
-- Why: trip planning can be overwhelming, because you need to keep track of a lot of details while remaining flexible. Many modern travelers would benefit from a way to jot down each and every idea they get, while also being able to shift those ideas around until a feasible schedule has been created. Ultimately, these travelers just want to get the most out of their trips.
+In developing user stories for the app, I focused on three central questions: who, specifically, are the users, what can the app provide to them and why would they consider using the app?
+
+- Who: travelers—organized and disorganized alike—who enjoy planning their trips in advance, and/or prefer some certainty in their itinerary.
+- What: an easy way to record potential trip plans—dinner at a restaurant, for example—and see whether they fit into a manageable schedule.
+- Why: trip planning can be overwhelming, because you need to keep track of a lot of details while remaining flexible. At the same time, many travelers prefer to plan some or most of their trips ahead of time. For these travelers, having a tool that makes planning fast, easy and inspiring is a no-brainer. After all, these travelers just want to get the most out of their trips.
 
 ### ERD
+
+While most of the tables store data necessary to the app's functionality, the categories table is currently not being utilized. A future development goal of mine is to add a feature where trip segments automatically change color depending on what category they fall under. For example, all of the dining related segments could be red, while all of the lodging segments could be blue. In order to achieve that, each segment needs to be assigned a category, and since segments are currently assigned a more specific subcategory, this could be accomplished by joining the category table to the subcategory table. This is why I decided to keep the categories table as part of the ERD.
 
 ![ERD](reference/img/trip-planner-erd.png)
 
