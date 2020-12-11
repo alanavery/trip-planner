@@ -19,6 +19,7 @@ const linkTripDelete = document.querySelector('.link-trip-delete');
 const linkAddSegmentAll = document.querySelectorAll('.link-add-segment');
 const linkEditSegmentAll = document.querySelectorAll('.link-edit-segment');
 const cancel = document.querySelector('.cancel');
+const save = document.querySelector('.save');
 
 // Functions
 

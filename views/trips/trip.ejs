@@ -59,8 +59,16 @@
 
 <!-- Subheader -->
 <section class="sec-subheader">
-  <h1><%= trip.name %></h1>
-  <ul>
+  <div>
+    <h1><%= trip.name %></h1>
+    <ul class="instructions">
+      <li>To start planning, pick a day and click Add.</li>
+      <li>Once you've created a trip segment, you can edit it, delete it or add more.</li>
+      <li>Reorder segments by dragging them up and down. Make sure you save afterwards.</li>
+      <li>Use the links to the right to edit your trip's details, or to delete it.</li>
+    </ul>
+  </div>
+  <ul class="subheader-links">
     <li class="link-trip-edit">Edit</li>
     <li class="link-trip-delete">Delete</li>
   </ul>

@@ -38,7 +38,10 @@ router.get('/:id', async (req, res) => {
     let subcategories = await db.subcategory.findAll();
     let segments = await db.segment.findAll({
       where: { tripId: req.params.id },
-      order: [['time', 'ASC']]
+      order: [
+        ['date', 'ASC'],
+        ['time', 'ASC']
+      ]
     });
     res.render('trips/trip', { trip, subcategories, segments });
   } catch (err) {
@@ -136,8 +139,8 @@ router.delete('/:id/:day/:segment', async (req, res) => {
 router.put('/:id/:day', async (req, res) => {
   try {
     let array = req.body.order.split(', ');
-    array.forEach(async (segmentId, index) => {
-      await db.segment.update(
+    await array.forEach((segmentId, index) => {
+      db.segment.update(
         {
           time: index + 1
         },

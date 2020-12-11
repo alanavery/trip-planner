@@ -3,11 +3,6 @@ let router = require('express').Router();
 let db = require('../models');
 let passport = require('../config/pp-config');
 
-// Route: GET /auth/signup
-router.get('/signup', (req, res) => {
-  res.render('auth/signup');
-});
-
 // Route: POST /auth/signup
 router.post('/signup', async (req, res) => {
   try {
@@ -23,7 +18,7 @@ router.post('/signup', async (req, res) => {
       passport.authenticate('local', {
         successRedirect: '/trips',
         successFlash: 'Account created.',
-        failureRedirect: '/auth/signup'
+        failureRedirect: '/'
       })(req, res);
     } else {
       req.flash('error', 'Invalid name, email and/or password.');
@@ -35,18 +30,16 @@ router.post('/signup', async (req, res) => {
   }
 });
 
-// Route: GET /auth/login
-router.get('/login', (req, res) => {
-  res.render('auth/login');
-});
-
 // Route: POST /auth/login
-router.post('/login', passport.authenticate('local', {
-  successRedirect: '/trips',
-  successFlash: 'You are logged in.',
-  failureRedirect: '/auth/login',
-  failureFlash: 'Invalid email and/or password.'
-}));
+router.post(
+  '/login',
+  passport.authenticate('local', {
+    successRedirect: '/trips',
+    successFlash: 'You are logged in.',
+    failureRedirect: '/',
+    failureFlash: 'Invalid email and/or password.'
+  })
+);
 
 // Route: GET /auth/logout
 router.get('/logout', (req, res) => {
